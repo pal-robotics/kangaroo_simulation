@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>kangaroo_simulation</name>
+  <version>1.10.1</version>
+  <description>The kangaroo_simulation metapackage</description>
+
+  <maintainer email="sergi.acosta@pal-robotics.com">Sergi de las Muelas</maintainer>
+
+  <license>Apache License 2.0</license>
+  
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>kangaroo_mujoco</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
