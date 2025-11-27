@@ -13,11 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
+
 from dataclasses import dataclass
 from launch import LaunchDescription
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
-from launch.actions import DeclareLaunchArgument, OpaqueFunction
+from launch.actions import DeclareLaunchArgument, OpaqueFunction, SetLaunchConfiguration
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_ros.actions import Node
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
@@ -85,6 +87,9 @@ def generate_launch_description():
 def declare_actions(
     launch_description: LaunchDescription, launch_args: LaunchArguments
 ):
+    launch_description.add_action(SetLaunchConfiguration("use_sim_time", "True"))
+    launch_description.add_action(SetLaunchConfiguration("sim_type", "mujoco-ros2-control"))
+
     # Robot Bringup
     bringup = include_scoped_launch_py_description(
         pkg_name="kangaroo_bringup",
@@ -93,7 +98,7 @@ def declare_actions(
             "use_sim_time": launch_args.use_sim_time,
             "use_mimic": launch_args.use_mimic,
             "collision_type": launch_args.collision_type,
-            "sim_type": "mujoco-ros2-control",
+            "sim_type": launch_args.sim_type,
             "mj_control": launch_args.mj_control,
             "has_head": launch_args.has_head,
             "has_pelvis": launch_args.has_pelvis,
@@ -110,39 +115,38 @@ def declare_actions(
     launch_description.add_action(OpaqueFunction(
         function=mujoco_model_publisher))
 
-
     # Mujoco Ros2 Control Simulation
     control_node = Node(
         package="mujoco_ros2_simulation",
         executable="ros2_control_node",
         output="both",
         parameters=[
-            {"use_sim_time": True},
+            {"use_sim_time": LaunchConfiguration("use_sim_time")},
         ],
     )
 
     launch_description.add_action(control_node)
     
-    # # Moveit2
-    # move_group = include_scoped_launch_py_description(
-    #     pkg_name='kangaroo_moveit_config',
-    #     paths=['launch', 'move_group.launch.py'],
-    #     launch_arguments={
-    #             "use_sim_time": launch_args.use_sim_time,
-    #             "use_mimic": launch_args.use_mimic,
-    #             "collision_type": launch_args.collision_type,
-    #             "sim_type": "mujoco-ros2-control",
-    #             "mj_control": launch_args.mj_control,
-    #             "has_head": launch_args.has_head,
-    #             "has_pelvis": launch_args.has_pelvis,
-    #             "arm_type": launch_args.arm_type,
-    #             "legs_type": launch_args.legs_type,
-    #             "end_effector_type": launch_args.end_effector_type,
-    #             "fixation_type": launch_args.fixation_type,
-    #     },
-    #     condition=IfCondition(LaunchConfiguration('moveit')))
+    # Moveit2
+    move_group = include_scoped_launch_py_description(
+        pkg_name='kangaroo_moveit_config',
+        paths=['launch', 'move_group.launch.py'],
+        launch_arguments={
+                "use_sim_time": launch_args.use_sim_time,
+                "use_mimic": launch_args.use_mimic,
+                "collision_type": launch_args.collision_type,
+                "sim_type": launch_args.sim_type, 
+                "mj_control": launch_args.mj_control,
+                "has_head": launch_args.has_head,
+                "has_pelvis": launch_args.has_pelvis,
+                "arm_type": launch_args.arm_type,
+                "legs_type": launch_args.legs_type,
+                "end_effector_type": launch_args.end_effector_type,
+                "fixation_type": launch_args.fixation_type,
+        },
+        condition=IfCondition(LaunchConfiguration('moveit')))
 
-    # launch_description.add_action(move_group)
+    launch_description.add_action(move_group)
 
     return
 
@@ -150,7 +154,7 @@ def mujoco_model_publisher(context, *args, **kwargs):
     xacro_input_args = {
         "robot_name": "kangaroo",
         "collision_type": read_launch_argument("collision_type", context),
-        "sim_type": "mujoco",
+        "sim_type": "mujoco", # We force mujoco to generate a proper XML without ROS2Control tags
         "mj_control": read_launch_argument("mj_control", context),
         "fixation_type": read_launch_argument("fixation_type", context),
         "legs_type": read_launch_argument("legs_type", context),
@@ -160,12 +164,21 @@ def mujoco_model_publisher(context, *args, **kwargs):
         "has_pelvis": read_launch_argument("has_pelvis", context),
     }
 
+    xacro_mappings_json: str = json.dumps(xacro_input_args)
+
     model_pub = Node(
-        package='pal_mujoco_model_loader_ros',
-        executable='publisher',
-        parameters=[xacro_input_args],
-        output='screen'
-    )
+                package="pal_mujoco_model_loader_ros",
+                executable="publisher",
+                name="mujoco_description_node",
+                output="screen",
+                parameters=[
+                    {
+                        "xacro_file_name": "kangaroo.urdf.xacro",
+                        "robot_name": "kangaroo",
+                        "xacro_mappings": xacro_mappings_json,
+                    }
+                ],
+            )
 
     return [model_pub]
 
