@@ -26,6 +26,10 @@ from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from kangaroo_description.launch_arguments import KangarooArgs
 from launch_pal.robot_arguments import CommonArgs
 
+from launch.actions import ExecuteProcess
+from launch.substitutions import PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
+
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
@@ -111,9 +115,24 @@ def declare_actions(
 
     launch_description.add_action(bringup)
 
-    # Mujoco Description
-    launch_description.add_action(OpaqueFunction(
-        function=mujoco_model_publisher))
+    converter_command = [
+        "python3",
+        PathJoinSubstitution([
+            FindPackageShare("mujoco_ros2_simulation"),
+            "scripts", 
+            "make_mjcf_from_robot_description.py", 
+        ]),
+        "-p", "mujoco_robot_description",
+    ]
+
+    converter_process = ExecuteProcess(
+        cmd=converter_command,
+        name="make_mjcf_from_robot_description",
+        output="screen",
+    #   True to see the output
+        emulate_tty=True,
+    )
+    launch_description.add_action(converter_process)
 
     # Mujoco Ros2 Control Simulation
     control_node = Node(
@@ -149,49 +168,6 @@ def declare_actions(
     launch_description.add_action(move_group)
 
     return
-
-def mujoco_model_publisher(context, *args, **kwargs):
-    xacro_input_args = {
-        "robot_name": "kangaroo",
-        "collision_type": read_launch_argument("collision_type", context),
-        "sim_type": "mujoco", # We force mujoco to generate a proper XML without ROS2Control tags
-        "mj_control": read_launch_argument("mj_control", context),
-        "fixation_type": read_launch_argument("fixation_type", context),
-        "legs_type": read_launch_argument("legs_type", context),
-        "arm_type": read_launch_argument("arm_type", context),
-        "end_effector_type": read_launch_argument("end_effector_type", context),
-        "has_head": read_launch_argument("has_head", context),
-        "has_pelvis": read_launch_argument("has_pelvis", context),
-    }
-
-    xacro_mappings_json: str = json.dumps(xacro_input_args)
-
-    model_pub = Node(
-                package="pal_mujoco_model_loader_ros",
-                executable="publisher",
-                name="mujoco_description_node",
-                output="screen",
-                parameters=[
-                    {
-                        "xacro_file_name": "kangaroo.urdf.xacro",
-                        "robot_name": "kangaroo",
-                        "xacro_mappings": xacro_mappings_json,
-                    }
-                ],
-            )
-
-    return [model_pub]
-
-
-
-
-
-
-
-
-
-
-
 
 
 
