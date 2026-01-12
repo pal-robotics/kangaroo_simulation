@@ -116,11 +116,13 @@ def declare_actions(
     converter_command = [
         "python3",
         PathJoinSubstitution([
-            FindPackageShare("mujoco_ros2_simulation"),
+            FindPackageShare("mujoco_ros2_control"),
             "scripts", 
             "make_mjcf_from_robot_description.py", 
         ]),
         "-p", "mujoco_robot_description",
+        "-a", "mujoco_model/assets",
+        "--convert_stl_to_obj",
     ]
 
     converter_process = ExecuteProcess(
@@ -134,7 +136,7 @@ def declare_actions(
 
     # Mujoco Ros2 Control Simulation
     control_node = Node(
-        package="mujoco_ros2_simulation",
+        package="mujoco_ros2_control",
         executable="ros2_control_node",
         output="both",
         parameters=[
