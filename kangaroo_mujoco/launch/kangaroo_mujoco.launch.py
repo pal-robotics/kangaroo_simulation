@@ -13,16 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import json
-
 from dataclasses import dataclass
 from launch import LaunchDescription
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
-from launch.actions import DeclareLaunchArgument, OpaqueFunction, SetLaunchConfiguration
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_ros.actions import Node
-from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
+from launch_pal.arg_utils import LaunchArgumentsBase
 from kangaroo_description.launch_arguments import KangarooArgs
 from launch_pal.robot_arguments import CommonArgs
 
