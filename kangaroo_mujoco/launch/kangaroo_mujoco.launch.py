@@ -115,27 +115,20 @@ def declare_actions(
 
     launch_description.add_action(bringup)
 
-    converter_command = [
-        "python3",
-        PathJoinSubstitution([
-            FindPackageShare("mujoco_ros2_control"),
-            "scripts", 
-            "make_mjcf_from_robot_description.py", 
-        ]),
-        "-p", "mujoco_robot_description",
-        "-f",
-        "-a", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
-        "--convert_stl_to_obj",
-    ]
-
-    converter_process = ExecuteProcess(
-        cmd=converter_command,
-        name="make_mjcf_from_robot_description",
-        output="screen",
-    #   True to see the output
+    # Launch the conversion node
+    converter_node = Node(
+        package="mujoco_ros2_control",
+        executable="robot_description_to_mjcf.sh",
+        output="both",
         emulate_tty=True,
+        arguments=[
+            "-p", "mujoco_robot_description",
+            "-f", 
+            "-a", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
+            "--convert_stl_to_obj",
+        ],
     )
-    launch_description.add_action(converter_process)
+    launch_description.add_action(converter_node)
 
     # Mujoco Ros2 Control Simulation
     control_node = Node(

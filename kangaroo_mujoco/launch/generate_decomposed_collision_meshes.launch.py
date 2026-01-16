@@ -20,6 +20,7 @@ from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, Execut
 from launch.event_handlers import OnProcessExit
 from launch.substitutions import PathJoinSubstitution, LaunchConfiguration, TextSubstitution
 
+from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 from launch_pal.include_utils import include_scoped_launch_py_description
@@ -111,31 +112,24 @@ def declare_actions(
 
     launch_description.add_action(robot_state_publisher)
     
-    converter_command = [
-        "python3",
-        PathJoinSubstitution([
-            FindPackageShare("mujoco_ros2_control"),
-            "scripts", 
-            "make_mjcf_from_robot_description.py", 
-        ]),
-        "-f",
-        "-s", 
-        "-o", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type")],
-        "--convert_stl_to_obj",
-    ]
-
-    converter_process = ExecuteProcess(
-        cmd=converter_command,
-        name="make_mjcf_from_robot_description",
-        output="screen",
-    #   True to see the output
+    # Launch the conversion node
+    converter_node = Node(
+        package="mujoco_ros2_control",
+        executable="robot_description_to_mjcf.sh",
+        output="both",
         emulate_tty=True,
+        arguments=[
+            "-f", 
+            "-s", 
+            "-o", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type")],
+            "--convert_stl_to_obj",
+        ],
     )
-    launch_description.add_action(converter_process)
+    launch_description.add_action(converter_node)
     
     exit_event_handler = RegisterEventHandler(
         event_handler=OnProcessExit(
-            target_action=converter_process,
+            target_action=converter_node,
             on_exit=[
                 LogInfo(msg='Generation finished! Stopping everything...'),
                 Shutdown()
