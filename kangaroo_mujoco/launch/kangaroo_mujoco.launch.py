@@ -14,19 +14,21 @@
 # limitations under the License.
 
 from dataclasses import dataclass
+
 from launch import LaunchDescription
 from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
-from launch_pal.include_utils import include_scoped_launch_py_description
-from launch_ros.actions import Node
-from launch_pal.arg_utils import LaunchArgumentsBase
-from kangaroo_description.launch_arguments import KangarooArgs
-from launch_pal.robot_arguments import CommonArgs
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, TextSubstitution
 
-from launch.actions import ExecuteProcess
-from launch.substitutions import PathJoinSubstitution
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, ExecuteProcess
+
+from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+
+from launch_pal.include_utils import include_scoped_launch_py_description
+from launch_pal.arg_utils import LaunchArgumentsBase
+from launch_pal.robot_arguments import CommonArgs
+from kangaroo_description.launch_arguments import KangarooArgs
+
 
 
 @dataclass(frozen=True)
@@ -121,7 +123,8 @@ def declare_actions(
             "make_mjcf_from_robot_description.py", 
         ]),
         "-p", "mujoco_robot_description",
-        "-a", "mujoco_model/assets",
+        "-f",
+        "-a", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
         "--convert_stl_to_obj",
     ]
 
