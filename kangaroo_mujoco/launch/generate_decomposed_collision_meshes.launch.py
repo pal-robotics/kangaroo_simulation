@@ -14,17 +14,19 @@
 # limitations under the License.
 
 from dataclasses import dataclass
-from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
-from launch_pal.include_utils import include_scoped_launch_py_description
-from launch_ros.actions import Node
-from launch_pal.arg_utils import LaunchArgumentsBase
-from kangaroo_description.launch_arguments import KangarooArgs
-from launch_pal.robot_arguments import CommonArgs
 
-from launch.actions import ExecuteProcess
-from launch.substitutions import PathJoinSubstitution
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, ExecuteProcess, LogInfo, RegisterEventHandler, Shutdown
+from launch.event_handlers import OnProcessExit
+from launch.substitutions import PathJoinSubstitution, LaunchConfiguration, TextSubstitution
+
 from launch_ros.substitutions import FindPackageShare
+
+from launch_pal.include_utils import include_scoped_launch_py_description
+from launch_pal.arg_utils import LaunchArgumentsBase
+
+from launch_pal.robot_arguments import CommonArgs
+from kangaroo_description.launch_arguments import KangarooArgs
 
 
 @dataclass(frozen=True)
@@ -108,7 +110,7 @@ def declare_actions(
             })
 
     launch_description.add_action(robot_state_publisher)
-
+    
     converter_command = [
         "python3",
         PathJoinSubstitution([
@@ -116,9 +118,9 @@ def declare_actions(
             "scripts", 
             "make_mjcf_from_robot_description.py", 
         ]),
-        "-p", "mujoco_robot_description",
+        "-f",
         "-s", 
-        "-o", "mujoco_model",
+        "-o", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type")],
         "--convert_stl_to_obj",
     ]
 
@@ -130,6 +132,17 @@ def declare_actions(
         emulate_tty=True,
     )
     launch_description.add_action(converter_process)
+    
+    exit_event_handler = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=converter_process,
+            on_exit=[
+                LogInfo(msg='Generation finished! Stopping everything...'),
+                Shutdown()
+            ]
+        )
+    )
+    launch_description.add_action(exit_event_handler)
 
     return
 
