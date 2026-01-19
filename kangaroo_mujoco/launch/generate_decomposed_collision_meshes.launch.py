@@ -16,19 +16,18 @@
 from dataclasses import dataclass
 
 from launch import LaunchDescription
-from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, TextSubstitution
-
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, ExecuteProcess
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, ExecuteProcess, LogInfo, RegisterEventHandler, Shutdown
+from launch.event_handlers import OnProcessExit
+from launch.substitutions import PathJoinSubstitution, LaunchConfiguration, TextSubstitution
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase
+
 from launch_pal.robot_arguments import CommonArgs
 from kangaroo_description.launch_arguments import KangarooArgs
-
 
 
 @dataclass(frozen=True)
@@ -94,13 +93,12 @@ def declare_actions(
     launch_description.add_action(SetLaunchConfiguration("use_sim_time", "True"))
     launch_description.add_action(SetLaunchConfiguration("sim_type", "mujoco-ros2-control"))
 
-    # Robot Bringup
-    bringup = include_scoped_launch_py_description(
-        pkg_name="kangaroo_bringup",
-        paths=["launch", "kangaroo_bringup.launch.py"],
+    # Robot State Publisher
+    robot_state_publisher = include_scoped_launch_py_description(
+        pkg_name='kangaroo_description',
+        paths=['launch', 'robot_state_publisher.launch.py'],
         launch_arguments={
             "use_sim_time": launch_args.use_sim_time,
-            "use_mimic": launch_args.use_mimic,
             "collision_type": launch_args.collision_type,
             "sim_type": launch_args.sim_type,
             "mj_control": launch_args.mj_control,
@@ -110,11 +108,10 @@ def declare_actions(
             "legs_type": launch_args.legs_type,
             "end_effector_type": launch_args.end_effector_type,
             "fixation_type": launch_args.fixation_type,
-        },
-    )
+            })
 
-    launch_description.add_action(bringup)
-
+    launch_description.add_action(robot_state_publisher)
+    
     # Launch the conversion node
     converter_node = Node(
         package="mujoco_ros2_control",
@@ -122,46 +119,24 @@ def declare_actions(
         output="both",
         emulate_tty=True,
         arguments=[
-            "-p", "mujoco_robot_description",
             "-f", 
-            "-a", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
+            "-s", 
+            "-o", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type")],
             "--convert_stl_to_obj",
         ],
     )
     launch_description.add_action(converter_node)
-
-    # Mujoco Ros2 Control Simulation
-    control_node = Node(
-        package="mujoco_ros2_control",
-        executable="ros2_control_node",
-        output="both",
-        parameters=[
-            {"use_sim_time": LaunchConfiguration("use_sim_time")},
-        ],
-    )
-
-    launch_description.add_action(control_node)
     
-    # Moveit2
-    move_group = include_scoped_launch_py_description(
-        pkg_name='kangaroo_moveit_config',
-        paths=['launch', 'move_group.launch.py'],
-        launch_arguments={
-                "use_sim_time": launch_args.use_sim_time,
-                "use_mimic": launch_args.use_mimic,
-                "collision_type": launch_args.collision_type,
-                "sim_type": launch_args.sim_type, 
-                "mj_control": launch_args.mj_control,
-                "has_head": launch_args.has_head,
-                "has_pelvis": launch_args.has_pelvis,
-                "arm_type": launch_args.arm_type,
-                "legs_type": launch_args.legs_type,
-                "end_effector_type": launch_args.end_effector_type,
-                "fixation_type": launch_args.fixation_type,
-        },
-        condition=IfCondition(LaunchConfiguration('moveit')))
-
-    launch_description.add_action(move_group)
+    exit_event_handler = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=converter_node,
+            on_exit=[
+                LogInfo(msg='Generation finished! Stopping everything...'),
+                Shutdown()
+            ]
+        )
+    )
+    launch_description.add_action(exit_event_handler)
 
     return
 
