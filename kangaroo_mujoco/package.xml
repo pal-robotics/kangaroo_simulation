@@ -2,19 +2,24 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>kangaroo_mujoco</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <version>2.0.0</version>
+  <description>Kangaroo MuJoCo simulation package</description>
+
   <maintainer email="sergi.acosta@pal-robotics.com">user</maintainer>
-  <license>TODO: License declaration</license>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <license>Apache License 2.0</license>
 
-  <depend>kangaroo_description</depend>
-  <depend>kangaroo_controller_configuration</depend>
-  <depend>mujoco_ros2_simulation</depend>
+  <buildtool_depend>ament_cmake_auto</buildtool_depend>
 
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+  <exec_depend>kangaroo_description</exec_depend>
+  <exec_depend>kangaroo_bringup</exec_depend>
+  <exec_depend>kangaroo_controller_configuration</exec_depend>
+  <exec_depend>pal_mujoco_scenes</exec_depend>
+  <!-- <exec_depend>mujoco_ros2_control</exec_depend> -->
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_pal</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
