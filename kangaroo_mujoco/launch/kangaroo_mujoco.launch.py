@@ -17,12 +17,11 @@ from dataclasses import dataclass
 
 from launch import LaunchDescription
 from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, TextSubstitution
+from launch.substitutions import LaunchConfiguration, TextSubstitution
 
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, ExecuteProcess
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, OpaqueFunction
 
 from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
 
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase
@@ -93,6 +92,7 @@ def declare_actions(
 ):
     launch_description.add_action(SetLaunchConfiguration("use_sim_time", "True"))
     launch_description.add_action(SetLaunchConfiguration("sim_type", "mujoco-ros2-control"))
+    launch_description.add_action(SetLaunchConfiguration("mj_control", "motor"))
 
     # Robot Bringup
     bringup = include_scoped_launch_py_description(
@@ -116,19 +116,26 @@ def declare_actions(
     launch_description.add_action(bringup)
 
     # Launch the conversion node
-    converter_node = Node(
-        package="mujoco_ros2_control",
-        executable="robot_description_to_mjcf.sh",
-        output="both",
-        emulate_tty=True,
-        arguments=[
+    def converter_node_setup(context, *args, **kwargs):
+        fixation_type = LaunchConfiguration("fixation_type").perform(context)
+        args_list = [
             "-p", "mujoco_robot_description",
-            "-f", 
             "-a", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
             "--convert_stl_to_obj",
-        ],
-    )
-    launch_description.add_action(converter_node)
+            "--no-fuse",
+        ]
+        if fixation_type == "floating":
+            args_list.append("-f")
+
+        return [Node(
+            package="mujoco_ros2_control",
+            executable="robot_description_to_mjcf.sh",
+            output="both",
+            emulate_tty=True,
+            arguments=args_list,
+        )]
+
+    launch_description.add_action(OpaqueFunction(function=converter_node_setup))
 
     # Mujoco Ros2 Control Simulation
     control_node = Node(

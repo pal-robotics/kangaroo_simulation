@@ -16,7 +16,7 @@
 from dataclasses import dataclass
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, ExecuteProcess, LogInfo, RegisterEventHandler, Shutdown
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, ExecuteProcess, LogInfo, RegisterEventHandler, Shutdown, OpaqueFunction
 from launch.event_handlers import OnProcessExit
 from launch.substitutions import PathJoinSubstitution, LaunchConfiguration, TextSubstitution
 
@@ -113,31 +113,39 @@ def declare_actions(
     launch_description.add_action(robot_state_publisher)
     
     # Launch the conversion node
-    converter_node = Node(
-        package="mujoco_ros2_control",
-        executable="robot_description_to_mjcf.sh",
-        output="both",
-        emulate_tty=True,
-        arguments=[
-            "-f", 
+    def converter_node_setup(context, *args, **kwargs):
+        fixation_type = LaunchConfiguration("fixation_type").perform(context)
+        args_list = [
             "-s", 
             "-o", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type")],
             "--convert_stl_to_obj",
-        ],
-    )
-    launch_description.add_action(converter_node)
-    
-    exit_event_handler = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=converter_node,
-            on_exit=[
-                LogInfo(msg='Generation finished! Stopping everything...'),
-                Shutdown()
-            ]
+            "--no-fuse",
+        ]
+        if fixation_type == "floating":
+            args_list.append("-f")
+        
+        converter_node = Node(
+            package="mujoco_ros2_control",
+            executable="robot_description_to_mjcf.sh",
+            output="both",
+            emulate_tty=True,
+            arguments=args_list,
+            )
+        
+        exit_event_handler = RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=converter_node,
+                on_exit=[
+                    LogInfo(msg='Generation finished! Stopping everything...'),
+                    Shutdown()
+                ]
+            )
         )
-    )
-    launch_description.add_action(exit_event_handler)
 
+        return [converter_node, exit_event_handler]
+    
+    launch_description.add_action(OpaqueFunction(function=converter_node_setup))
+     
     return
 
 
