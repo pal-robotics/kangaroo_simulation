@@ -1,0 +1,262 @@
+/**:
+  ros__parameters:
+    pid_gains:
+      position:
+        # Arms
+        arm_left_1_joint:
+          p: 49.94
+          i: 0.0
+          d: 3.179
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_left_2_joint:
+          p: 49.94
+          i: 0.0
+          d: 3.179
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_left_3_joint:
+          p: 26.177
+          i: 0.0
+          d: 1.666
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_left_4_joint:
+          p: 26.177
+          i: 0.0
+          d: 1.666
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_left_5_joint:
+          p: 1000.0
+          i: 0.0
+          d: 0.0
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_left_6_joint:
+          p: 1000.0
+          i: 0.0
+          d: 0.0
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_left_7_joint:
+          p: 1000.0
+          i: 0.0
+          d: 0.0
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        gripper_left_finger_joint:
+          p: 1000.0
+          i: 0.0
+          d: 0.0
+          u_clamp_max: 50.0
+          u_clamp_min: -50.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_right_1_joint:
+          p: 49.94
+          i: 0.0
+          d: 3.179
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_right_2_joint:
+          p: 49.94
+          i: 0.0
+          d: 3.179
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_right_3_joint:
+          p: 26.177
+          i: 0.0
+          d: 1.666
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_right_4_joint:
+          p: 26.177
+          i: 0.0
+          d: 1.666
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_right_5_joint:
+          p: 1000.0
+          i: 0.0
+          d: 0.0
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_right_6_joint:
+          p: 1000.0
+          i: 0.0
+          d: 0.0
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        arm_right_7_joint:
+          p: 1000.0
+          i: 0.0
+          d: 0.0
+          u_clamp_max: 43.0
+          u_clamp_min: -43.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        gripper_right_finger_joint:
+          p: 1000.0
+          i: 0.0
+          d: 0.0
+          u_clamp_max: 50.0
+          u_clamp_min: -50.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+
+        # Pelvis
+        pelvis_1_joint:
+          p: 49.94
+          i: 0.0
+          d: 3.179
+          u_clamp_max: 100.0
+          u_clamp_min: -100.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        pelvis_2_joint:
+          p: 49.94
+          i: 0.0
+          d: 3.179
+          u_clamp_max: 100.0
+          u_clamp_min: -100.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+
+        # Legs
+        leg_left_1_joint:
+          p: 100.0
+          i: 0.0
+          d: 6.366
+          u_clamp_max: 80.0
+          u_clamp_min: -80.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        leg_left_2_joint:
+          p: 100.0
+          i: 0.0
+          d: 6.366
+          u_clamp_max: 230.0
+          u_clamp_min: -230.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        leg_left_3_joint:
+          p: 100.0
+          i: 0.0
+          d: 6.366
+          u_clamp_max: 139.0
+          u_clamp_min: -139.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        leg_left_length_joint:
+          p: 1600.0
+          i: 0.0
+          d: 101.859
+          u_clamp_max: 1100.0
+          u_clamp_min: -1100.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        leg_left_4_joint:
+          p: 30.0
+          i: 0.0
+          d: 1.91
+          u_clamp_max: 140.0
+          u_clamp_min: -140.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        leg_left_5_joint:
+          p: 30.0
+          i: 0.0
+          d: 1.91
+          u_clamp_max: 82.0
+          u_clamp_min: -82.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        leg_right_1_joint:
+          p: 100.0
+          i: 0.0
+          d: 6.366
+          u_clamp_max: 80.0
+          u_clamp_min: -80.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        leg_right_2_joint:
+          p: 100.0
+          i: 0.0
+          d: 6.366
+          u_clamp_max: 230.0
+          u_clamp_min: -230.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        leg_right_3_joint:
+          p: 100.0
+          i: 0.0
+          d: 6.366
+          u_clamp_max: 139.0
+          u_clamp_min: -139.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        leg_right_length_joint:
+          p: 1600.0
+          i: 0.0
+          d: 101.859
+          u_clamp_max: 1100.0
+          u_clamp_min: -1100.0
+          i_clamp_max: 50.0
+          i_clamp_min: -50.0
+        leg_right_4_joint:
+          p: 30.0
+          i: 0.0
+          d: 1.91
+          u_clamp_max: 140.0
+          u_clamp_min: -140.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+        leg_right_5_joint:
+          p: 30.0
+          i: 0.0
+          d: 1.91
+          u_clamp_max: 82.0
+          u_clamp_min: -82.0
+          i_clamp_max: 10.0
+          i_clamp_min: -10.0
+
+    # pid_gains:
+    #   velocity:
+    #     joint1:
+    #       p: 30.0
+    #       i: 0.1
+    #       d: 1.0
+    #       u_clamp_max: 100.0
+    #       u_clamp_min: -100.0
+    #       i_clamp_max: 10.0
+    #       i_clamp_min: -10.0
+
+
