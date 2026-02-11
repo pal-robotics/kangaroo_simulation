@@ -22,6 +22,7 @@ from launch.substitutions import LaunchConfiguration, TextSubstitution
 from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, OpaqueFunction
 
 from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
 
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase
@@ -120,7 +121,7 @@ def declare_actions(
         fixation_type = LaunchConfiguration("fixation_type").perform(context)
         args_list = [
             "-p", "mujoco_robot_description",
-            "-a", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
+            "-a", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
             "--convert_stl_to_obj",
             "--no-fuse",
         ]
