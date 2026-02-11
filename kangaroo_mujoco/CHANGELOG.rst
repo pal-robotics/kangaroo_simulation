@@ -2,6 +2,13 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* updated model loading path
+* updated installation rules
+* added decomposed model
+* Contributors: sergiacosta
+
 2.0.0 (2026-02-04)
 ------------------
 * updated metadata
