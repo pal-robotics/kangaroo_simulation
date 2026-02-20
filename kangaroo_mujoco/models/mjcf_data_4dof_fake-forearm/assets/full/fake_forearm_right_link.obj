@@ -1,6 +1,6 @@
 # https://github.com/mikedh/trimesh
-mtllib mtl_m21
-usemtl mtl_m21
+mtllib mtl_m20
+usemtl mtl_m20
 v 0.03665943 -0.03175430 -0.01027028
 v 0.03637634 -0.03207822 -0.01027028
 v 0.03969700 -0.03297832 -0.01027028

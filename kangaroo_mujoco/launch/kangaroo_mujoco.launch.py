@@ -29,7 +29,12 @@ from launch_pal.arg_utils import LaunchArgumentsBase
 from launch_pal.robot_arguments import CommonArgs
 from kangaroo_description.launch_arguments import KangarooArgs
 
-
+from launch.substitutions import (
+    Command,
+    FindExecutable,
+    LaunchConfiguration,
+    PathJoinSubstitution,
+)
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
@@ -111,33 +116,35 @@ def declare_actions(
             "legs_type": launch_args.legs_type,
             "end_effector_type": launch_args.end_effector_type,
             "fixation_type": launch_args.fixation_type,
-        },
+        },  
     )
 
     launch_description.add_action(bringup)
 
     # Launch the conversion node
-    def converter_node_setup(context, *args, **kwargs):
-        fixation_type = LaunchConfiguration("fixation_type").perform(context)
-        args_list = [
-            "-p", "mujoco_robot_description",
-            "-a", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
-            "--convert_stl_to_obj",
-            "--no-fuse",
-        ]
-        if fixation_type == "floating":
-            args_list.append("-f")
+    # def converter_node_setup(context, *args, **kwargs):
+    #     fixation_type = LaunchConfiguration("fixation_type").perform(context)
+    #     args_list = [
+    #         "-p", "mujoco_robot_description",
+    #         "-a", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
+    #         "--convert_stl_to_obj",
+    #         "--no-fuse",
+    #     ]
+    #     if fixation_type == "floating":
+    #         args_list.append("-f")
 
-        return [Node(
-            package="mujoco_ros2_control",
-            executable="robot_description_to_mjcf.sh",
-            output="both",
-            emulate_tty=True,
-            arguments=args_list,
-        )]
+    #     return [Node(
+    #         package="mujoco_ros2_control",
+    #         executable="robot_description_to_mjcf.sh",
+    #         output="both",
+    #         emulate_tty=True,
+    #         arguments=args_list,
+    #     )]
 
-    launch_description.add_action(OpaqueFunction(function=converter_node_setup))
+    # launch_description.add_action(OpaqueFunction(function=converter_node_setup))
 
+
+    parameters_file = PathJoinSubstitution([FindPackageShare("kangaroo_mujoco"), "config", "controller_manager.yaml"]) 
     # Mujoco Ros2 Control Simulation
     control_node = Node(
         package="mujoco_ros2_control",
@@ -145,6 +152,7 @@ def declare_actions(
         output="both",
         parameters=[
             {"use_sim_time": LaunchConfiguration("use_sim_time")},
+            parameters_file,
         ],
     )
 

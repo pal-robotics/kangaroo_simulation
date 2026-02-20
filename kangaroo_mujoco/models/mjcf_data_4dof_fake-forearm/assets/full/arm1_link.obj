@@ -1,6 +1,6 @@
 # https://github.com/mikedh/trimesh
-mtllib mtl_m17
-usemtl mtl_m17
+mtllib mtl_m16
+usemtl mtl_m16
 v 0.04888479 0.03156130 -0.13591959
 v 0.04887844 0.03156043 -0.13591848
 v 0.04901107 0.03053676 -0.13470016
