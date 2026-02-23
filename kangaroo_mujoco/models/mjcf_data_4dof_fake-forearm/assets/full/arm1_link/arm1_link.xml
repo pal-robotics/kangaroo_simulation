@@ -8,12 +8,12 @@
     </default>
   </default>
   <asset>
-    <material name="mtl_m16" specular="0.20000000000000004" shininess="1.0" rgba="0.29803922 0.29803922 0.29803922 1.0"/>
+    <material name="mtl_m17" specular="0.20000000000000004" shininess="1.0" rgba="0.29803922 0.29803922 0.29803922 1.0"/>
     <mesh file="arm1_link.obj"/>
   </asset>
   <worldbody>
     <body name="arm1_link">
-      <geom material="mtl_m16" mesh="arm1_link" class="visual"/>
+      <geom material="mtl_m17" mesh="arm1_link" class="visual"/>
       <geom mesh="arm1_link" class="collision"/>
     </body>
   </worldbody>

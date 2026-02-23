@@ -11,7 +11,8 @@
     <mesh name="leg_left_1_link" content_type="model/obj" file="full/leg_left_1_link.obj"/>
     <mesh name="leg_left_2_link" content_type="model/obj" file="full/leg_left_2_link.obj"/>
     <mesh name="leg_left_3_link" content_type="model/obj" file="full/leg_left_3_link.obj"/>
-    <mesh name="leg_femur_link" content_type="model/obj" file="full/leg_femur_link.obj"/>
+    <mesh name="leg_4_collision_link" content_type="model/obj" file="full/leg_4_collision_link.obj"/>
+    <mesh name="leg_tibia_link" content_type="model/obj" file="full/leg_tibia_link.obj"/>
     <mesh name="leg_6_link" content_type="model/obj" file="full/leg_6_link.obj"/>
     <mesh name="leg_7_link" content_type="model/obj" file="decomposed/leg_7_link/leg_7_link.obj"/>
     <mesh name="leg_right_1_link" content_type="model/obj" file="full/leg_right_1_link.obj"/>
@@ -141,10 +142,11 @@
             <body name="leg_left_femur_link" pos="0 0.0669 -0.09" quat="0.819152 0 -0.573576 0">
               <inertial pos="0.0527475 0.000135688 -0.146959" quat="0.720223 -0.0942418 -0.0980078 0.680288" mass="3.94567" diaginertia="0.0121138 0.0118241 0.00184947"/>
               <joint name="leg_left_femur_joint" pos="0 0 0" axis="0 1 0" range="0.174533 1.22173" actuatorfrcrange="-100 100"/>
-              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.298039 0.298039 0.298039 1" mesh="leg_femur_link"/>
+              <geom pos="0 0 0" quat="0.866025 0 0.5 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.298039 0.298039 0.298039 1" mesh="leg_4_collision_link"/>
               <body name="leg_left_knee_link" pos="0.129945 0 -0.357092" quat="0.34202 0 0.939693 0">
                 <inertial pos="-0.0569665 -5.4131e-05 -0.148821" quat="0.698616 0.0970713 0.0960701 0.702341" mass="1.02238" diaginertia="0.00215347 0.00207236 0.000258578"/>
                 <joint name="leg_left_knee_joint" pos="0 0 0" axis="0 -1 0" range="0.349066 2.44346" actuatorfrcrange="-100 100"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.298039 0.298039 0.298039 1" mesh="leg_tibia_link"/>
                 <body name="leg_left_knee_straight" quat="0.819152 0 -0.573576 0">
                   <body name="leg_left_knee_lower_bearing" pos="-0.38 0 0"/>
                 </body>
@@ -190,10 +192,11 @@
             <body name="leg_right_femur_link" pos="0 -0.0669 -0.09" quat="0.819152 0 -0.573576 0">
               <inertial pos="0.0527475 0.000135688 -0.146959" quat="0.720223 -0.0942418 -0.0980078 0.680288" mass="3.94567" diaginertia="0.0121138 0.0118241 0.00184947"/>
               <joint name="leg_right_femur_joint" pos="0 0 0" axis="0 1 0" range="0.174533 1.22173" actuatorfrcrange="-100 100"/>
-              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.298039 0.298039 0.298039 1" mesh="leg_femur_link"/>
+              <geom pos="0 0 0" quat="0.866025 0 0.5 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.298039 0.298039 0.298039 1" mesh="leg_4_collision_link"/>
               <body name="leg_right_knee_link" pos="0.129945 0 -0.357092" quat="0.34202 0 0.939693 0">
                 <inertial pos="-0.0569665 -5.4131e-05 -0.148821" quat="0.698616 0.0970713 0.0960701 0.702341" mass="1.02238" diaginertia="0.00215347 0.00207236 0.000258578"/>
                 <joint name="leg_right_knee_joint" pos="0 0 0" axis="0 -1 0" range="0.349066 2.44346" actuatorfrcrange="-100 100"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.298039 0.298039 0.298039 1" mesh="leg_tibia_link"/>
                 <body name="leg_right_knee_straight" quat="0.819152 0 -0.573576 0">
                   <body name="leg_right_knee_lower_bearing" pos="-0.38 0 0"/>
                 </body>
