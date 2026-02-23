@@ -92,6 +92,7 @@ def declare_actions(
 ):
     launch_description.add_action(SetLaunchConfiguration("use_sim_time", "True"))
     launch_description.add_action(SetLaunchConfiguration("sim_type", "mujoco-ros2-control"))
+    launch_description.add_action(SetLaunchConfiguration("mj_control", "motor"))
 
     # Robot State Publisher
     robot_state_publisher = include_scoped_launch_py_description(
