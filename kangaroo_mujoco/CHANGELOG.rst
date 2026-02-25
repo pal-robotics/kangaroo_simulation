@@ -2,6 +2,17 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* apply format
+* removed unnecessary imports
+* updated model
+* set motor actuator default
+* Enable topic publishing and also add emulate_tty for better noticing of logs
+* Set back to 2kHz
+* added test model and config to rl inference
+* Contributors: Sai Kishor Kothakota, sergiacosta
+
 2.0.1 (2026-02-11)
 ------------------
 * updated model loading path
