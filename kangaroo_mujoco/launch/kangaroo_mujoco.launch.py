@@ -30,8 +30,6 @@ from launch_pal.robot_arguments import CommonArgs
 from kangaroo_description.launch_arguments import KangarooArgs
 
 from launch.substitutions import (
-    Command,
-    FindExecutable,
     LaunchConfiguration,
     PathJoinSubstitution,
 )

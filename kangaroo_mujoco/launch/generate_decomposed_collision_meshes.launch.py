@@ -16,12 +16,11 @@
 from dataclasses import dataclass
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, ExecuteProcess, LogInfo, RegisterEventHandler, Shutdown, OpaqueFunction
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, LogInfo, RegisterEventHandler, Shutdown, OpaqueFunction
 from launch.event_handlers import OnProcessExit
-from launch.substitutions import PathJoinSubstitution, LaunchConfiguration, TextSubstitution
+from launch.substitutions import LaunchConfiguration, TextSubstitution
 
 from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
 
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase
