@@ -29,7 +29,10 @@ from launch_pal.arg_utils import LaunchArgumentsBase
 from launch_pal.robot_arguments import CommonArgs
 from kangaroo_description.launch_arguments import KangarooArgs
 
-
+from launch.substitutions import (
+    LaunchConfiguration,
+    PathJoinSubstitution,
+)
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
@@ -138,13 +141,17 @@ def declare_actions(
 
     launch_description.add_action(OpaqueFunction(function=converter_node_setup))
 
+
+    parameters_file = PathJoinSubstitution([FindPackageShare("kangaroo_mujoco"), "config", "controller_manager.yaml"]) 
     # Mujoco Ros2 Control Simulation
     control_node = Node(
         package="mujoco_ros2_control",
         executable="ros2_control_node",
+        emulate_tty=True,
         output="both",
         parameters=[
             {"use_sim_time": LaunchConfiguration("use_sim_time")},
+            parameters_file,
         ],
     )
 
