@@ -114,7 +114,7 @@ def declare_actions(
             "legs_type": launch_args.legs_type,
             "end_effector_type": launch_args.end_effector_type,
             "fixation_type": launch_args.fixation_type,
-        },  
+        },
     )
 
     launch_description.add_action(bringup)
