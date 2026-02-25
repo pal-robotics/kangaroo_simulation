@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.1.0 (2026-02-25)
+------------------
 * apply format
 * removed unnecessary imports
 * updated model
