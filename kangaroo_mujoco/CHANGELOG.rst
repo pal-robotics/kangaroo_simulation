@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.1.1 (2026-04-23)
+------------------
 * Add missing dependency mujoco_ros2_control
 * Contributors: Noel Jimenez
 
