@@ -68,14 +68,19 @@ class LaunchArguments(LaunchArgumentsBase):
     # ["no-arm", "4dof", "5dof", "7dof"]
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
     
-    # ["ft-leg", "leg", "no-leg"]
-    legs_type: DeclareLaunchArgument = KangarooArgs.legs_type
+    # ["fixed", "detachable"]
+    feet_type: DeclareLaunchArgument = KangarooArgs.feet_type
     
-    # ["cover", "fake-forearm", "ft-gripper", "gripper", "RA8D"]
-    end_effector_type: DeclareLaunchArgument = KangarooArgs.end_effector_type
+    # ["fake-forearm", "ft-gripper", "gripper", "RA8D"]
+    end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
+    end_effector_left: DeclareLaunchArgument = KangarooArgs.end_effector_left
 
     # Fixation type ["crane", "fixed", "floating"]
     fixation_type: DeclareLaunchArgument = KangarooArgs.fixation_type
+
+    # FT sensor type ["no-ft-sensor", "ati"]
+    ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
+    ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
 
 def generate_launch_description():
@@ -111,8 +116,11 @@ def declare_actions(
             "has_head": launch_args.has_head,
             "has_pelvis": launch_args.has_pelvis,
             "arm_type": launch_args.arm_type,
-            "legs_type": launch_args.legs_type,
-            "end_effector_type": launch_args.end_effector_type,
+            "feet_type": launch_args.feet_type,
+            "end_effector_right": launch_args.end_effector_right,
+            "end_effector_left": launch_args.end_effector_left,
+            "ft_sensor_right": launch_args.ft_sensor_right,
+            "ft_sensor_left": launch_args.ft_sensor_left,
             "fixation_type": launch_args.fixation_type,
         },
     )
@@ -124,7 +132,7 @@ def declare_actions(
         fixation_type = LaunchConfiguration("fixation_type").perform(context)
         args_list = [
             "-p", "mujoco_robot_description",
-            "-a", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_type"), TextSubstitution(text="/assets")],
+            "-a", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_right"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_left"), TextSubstitution(text="/assets")],
             "--convert_stl_to_obj",
             "--no-fuse",
         ]
@@ -170,13 +178,16 @@ def declare_actions(
                 "has_head": launch_args.has_head,
                 "has_pelvis": launch_args.has_pelvis,
                 "arm_type": launch_args.arm_type,
-                "legs_type": launch_args.legs_type,
-                "end_effector_type": launch_args.end_effector_type,
+                "feet_type": launch_args.feet_type,
+                "end_effector_right": launch_args.end_effector_right,
+                "end_effector_left": launch_args.end_effector_left,
                 "fixation_type": launch_args.fixation_type,
+                "ft_sensor_right": launch_args.ft_sensor_right,
+                "ft_sensor_left": launch_args.ft_sensor_left,
         },
         condition=IfCondition(LaunchConfiguration('moveit')))
-
-    launch_description.add_action(move_group)
+    # To be added once kangaroo_moveit_config is updated
+    # launch_description.add_action(move_group)
 
     return
 
