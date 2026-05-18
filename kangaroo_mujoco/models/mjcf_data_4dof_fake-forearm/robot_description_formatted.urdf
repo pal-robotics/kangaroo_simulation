@@ -380,7 +380,7 @@
 			<material name="pal/DarkGrey"/>
 		</visual>
 		<!-- The FT sensors is still not available -->
-		<!-- <xacro:if value="${legs_type in ['ft-leg']}">
+		<!-- 
         <inertial>
           <origin xyz="0.0056012722847415 -8.11751E-06 -0.062005508" rpy="0 0 0" />
           <mass value="0.826924" />
@@ -412,7 +412,7 @@
             <box size="0.249 0.10 0.025"/>
           </geometry>
         </collision>
-      </xacro:if> -->
+      -->
 	</link>
 	<joint name="leg_left_5_joint" type="revolute">
 		<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -428,25 +428,25 @@
 		<origin rpy="0 -0.3490658503988659 0" xyz="0 0 0"/>
 	</joint>
 	<!-- The FT sensors is still not available -->
-	<!-- <xacro:if value="${legs_type in ['ft-leg']}">
+	<!-- 
       <link name="${side}_ft_sensor_link"/>
       <joint name="${side}_ft_sensor_joint" type="fixed">
         <parent link="leg_${side}_${roll_joint}_aligned_link" />
         <child link="${side}_ft_sensor_link" />
         <origin xyz="0.00855050358313864 0 -0.023492315519661" rpy="0 ${-20.0 * deg_to_rad} 0" />
       </joint>
-    </xacro:if> -->
+ -->
 	<link name="left_sole_link"/>
 	<joint name="left_sole_joint" type="fixed">
 		<parent link="leg_left_5_aligned_link"/>
 		<child link="left_sole_link"/>
 		<origin rpy="0 0 0" xyz="0.0 0.0 -0.0425"/>
 		<!-- The FT sensors is still not available -->
-		<!-- <xacro:if value="${legs_type in ['ft-leg']}">
+		<!-- 
         <parent link="${side}_ft_sensor_link" />
         <child link="${side}_sole_link" />
         <origin xyz="0.006889 0 -0.0495" rpy="0 0 0" />
-      </xacro:if> -->
+		-->
 	</joint>
 	<link name="left_foot_upper_left"/>
 	<link name="left_foot_upper_right"/>
@@ -647,7 +647,7 @@
 			<material name="pal/DarkGrey"/>
 		</visual>
 		<!-- The FT sensors is still not available -->
-		<!-- <xacro:if value="${legs_type in ['ft-leg']}">
+		<!--
         <inertial>
           <origin xyz="0.0056012722847415 -8.11751E-06 -0.062005508" rpy="0 0 0" />
           <mass value="0.826924" />
@@ -679,7 +679,7 @@
             <box size="0.249 0.10 0.025"/>
           </geometry>
         </collision>
-      </xacro:if> -->
+      	-->
 	</link>
 	<joint name="leg_right_5_joint" type="revolute">
 		<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -695,25 +695,25 @@
 		<origin rpy="0 -0.3490658503988659 0" xyz="0 0 0"/>
 	</joint>
 	<!-- The FT sensors is still not available -->
-	<!-- <xacro:if value="${legs_type in ['ft-leg']}">
+	<!-- 
       <link name="${side}_ft_sensor_link"/>
       <joint name="${side}_ft_sensor_joint" type="fixed">
         <parent link="leg_${side}_${roll_joint}_aligned_link" />
         <child link="${side}_ft_sensor_link" />
         <origin xyz="0.00855050358313864 0 -0.023492315519661" rpy="0 ${-20.0 * deg_to_rad} 0" />
       </joint>
-    </xacro:if> -->
+    -->
 	<link name="right_sole_link"/>
 	<joint name="right_sole_joint" type="fixed">
 		<parent link="leg_right_5_aligned_link"/>
 		<child link="right_sole_link"/>
 		<origin rpy="0 0 0" xyz="0.0 0.0 -0.0425"/>
 		<!-- The FT sensors is still not available -->
-		<!-- <xacro:if value="${legs_type in ['ft-leg']}">
+		<!-- 
         <parent link="${side}_ft_sensor_link" />
         <child link="${side}_sole_link" />
         <origin xyz="0.006889 0 -0.0495" rpy="0 0 0" />
-      </xacro:if> -->
+     	-->
 	</joint>
 	<link name="right_foot_upper_left"/>
 	<link name="right_foot_upper_right"/>
