@@ -2155,6 +2155,6 @@
 		</sensor>
 	</ros2_control>
 	<mujoco>
-		<compiler assetdir="/tmp/tmp03lrv5zk/assets" balanceinertia="true" discardvisual="false" strippath="false" fusestatic="false"/>
+		<compiler assetdir="assets" balanceinertia="true" discardvisual="false" strippath="false" fusestatic="false"/>
 	</mujoco>
 </robot>

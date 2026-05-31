@@ -1,5 +1,5 @@
 <mujoco model="kangaroo">
-  <compiler angle="radian" meshdir="/tmp/tmp03lrv5zk/assets/" texturedir="/tmp/tmp03lrv5zk/assets/"/>
+  <compiler angle="radian" meshdir="assets/" texturedir="assets/"/>
   <asset>
     <mesh file="full/base_link_with_pelvis/base_link_with_pelvis.obj" scale="1.0 1.0 1.0"/>
     <material name="mtl_base_link_with_pelvis" specular="0.20000000000000004" shininess="1.0" rgba="0.29803922 0.29803922 0.29803922 1.0"/>
