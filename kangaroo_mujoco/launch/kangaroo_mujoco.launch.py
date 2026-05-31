@@ -133,6 +133,7 @@ def declare_actions(
         args_list = [
             "-p", "mujoco_robot_description",
             "-a", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_right"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_left"), TextSubstitution(text="/assets")],
+            "--cache-dir", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_right"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_left")],
             "--convert_stl_to_obj",
             "--no-fuse",
         ]
