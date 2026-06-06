@@ -17,6 +17,9 @@
   <exec_depend>pal_mujoco_scenes</exec_depend>
   <exec_depend>mujoco_ros2_control</exec_depend>
 
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_pal</exec_depend>
   <exec_depend>launch_ros</exec_depend>

@@ -13,11 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 from dataclasses import dataclass
 
 from launch import LaunchDescription
 from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration, TextSubstitution
+from launch.substitutions import LaunchConfiguration
 
 from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, OpaqueFunction
 
@@ -127,13 +129,40 @@ def declare_actions(
 
     launch_description.add_action(bringup)
 
-    # Launch the conversion node
+    # Launch the conversion node.
+    #
+    # If a previously generated MJCF already exists on disk, publish it directly with
+    # the lightweight publish_mjcf.py node (no URDF->MJCF conversion, no Python venv
+    # bootstrap). Otherwise fall back to the converter, which regenerates the MJCF
+    # from the robot_description and publishes it on the same topic.
     def converter_node_setup(context, *args, **kwargs):
         fixation_type = LaunchConfiguration("fixation_type").perform(context)
+        arm_type = LaunchConfiguration("arm_type").perform(context)
+        end_effector_right = LaunchConfiguration("end_effector_right").perform(context)
+        end_effector_left = LaunchConfiguration("end_effector_left").perform(context)
+
+        pkg_share = FindPackageShare("kangaroo_mujoco").perform(context)
+        cache_dir = os.path.join(
+            pkg_share,
+            "models",
+            f"mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}",
+        )
+        mjcf_file = os.path.join(cache_dir, "mujoco_description_formatted.xml")
+
+        if os.path.isfile(mjcf_file) and os.path.getsize(mjcf_file) > 0:
+            # Pre-generated MJCF found: publish it directly.
+            return [Node(
+                package="kangaroo_mujoco",
+                executable="publish_mjcf.py",
+                output="both",
+                emulate_tty=True,
+                arguments=[mjcf_file, "mujoco_robot_description"],
+            )]
+
+        # No cached MJCF: regenerate from the robot_description and publish it.
         args_list = [
             "-p", "mujoco_robot_description",
-            "-a", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_right"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_left"), TextSubstitution(text="/assets")],
-            "--cache-dir", [FindPackageShare("kangaroo_mujoco"), TextSubstitution(text="/models/mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_right"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_left")],
+            "-a", os.path.join(cache_dir, "assets"),
             "--convert_stl_to_obj",
             "--no-fuse",
         ]
