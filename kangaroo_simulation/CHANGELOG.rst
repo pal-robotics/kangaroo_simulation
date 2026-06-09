@@ -2,6 +2,9 @@
 Changelog for package kangaroo_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.1.1 (2026-04-23)
 ------------------
 

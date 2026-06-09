@@ -2,6 +2,22 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'update/models' into 'humble-devel'
+  Update kangaroo models of 4DoF and lower body to local frozen mjcfs
+  See merge request robots/kangaroo_simulation!9
+* Add a script to publish the mujoco description if it is already generated
+* Remove the bodies of the torso cameras
+* Use capsules for the foot contact
+* Add --cache-dir arg to reuse the generated mjcfs
+* make meshdir, texturedir and assetdir relative paths
+* Add the robot with configuration of lower body only
+* rename the cached folder to mjcf_data_4dof_fake-forearm_fake-forearm
+* Remove leg_type argument assuming is always leg
+* Add new arguments as end_effector\_<side> and feet_type
+* Contributors: Aina, Sai Kishor Kothakota
+
 2.1.1 (2026-04-23)
 ------------------
 * Add missing dependency mujoco_ros2_control
