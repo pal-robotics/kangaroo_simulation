@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.2.1 (2026-06-09)
+------------------
 * Merge branch 'fix/ankle_ft_missing_args' into 'humble-devel'
   Add missing ankle ft sensor arguments
   See merge request robots/kangaroo_simulation!10
