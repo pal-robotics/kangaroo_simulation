@@ -84,6 +84,10 @@ class LaunchArguments(LaunchArgumentsBase):
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
+    # Ankle FT sensor type ["no-ft-sensor", "ati"]
+    ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
+    ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
+
 
 def generate_launch_description():
 
@@ -124,6 +128,8 @@ def declare_actions(
             "ft_sensor_right": launch_args.ft_sensor_right,
             "ft_sensor_left": launch_args.ft_sensor_left,
             "fixation_type": launch_args.fixation_type,
+            "ankle_ft_left": launch_args.ankle_ft_left,
+            "ankle_ft_right": launch_args.ankle_ft_right,
         },
     )
 
