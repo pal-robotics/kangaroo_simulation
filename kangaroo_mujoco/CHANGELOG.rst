@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.2.0 (2026-06-09)
+------------------
 * Merge branch 'update/models' into 'humble-devel'
   Update kangaroo models of 4DoF and lower body to local frozen mjcfs
   See merge request robots/kangaroo_simulation!9
