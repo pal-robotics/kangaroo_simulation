@@ -2,6 +2,14 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add/imu_args' into 'humble-devel'
+  Add IMU args to the mujoco simulator
+  See merge request robots/kangaroo_simulation!11
+* Add IMU args to the mujoco simulator
+* Contributors: Sai Kishor Kothakota
+
 2.2.1 (2026-06-09)
 ------------------
 * Merge branch 'fix/ankle_ft_missing_args' into 'humble-devel'
