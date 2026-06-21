@@ -88,6 +88,12 @@ class LaunchArguments(LaunchArgumentsBase):
     ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
     ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
 
+    # Torso IMU models ["orientus", "microstrain", "no-imu"]
+    torso_imu_model: DeclareLaunchArgument = KangarooArgs.torso_imu_model
+
+    # Base IMU models ["microstrain", "no-imu"]
+    base_imu_model: DeclareLaunchArgument = KangarooArgs.base_imu_model
+
 
 def generate_launch_description():
 
@@ -130,6 +136,8 @@ def declare_actions(
             "fixation_type": launch_args.fixation_type,
             "ankle_ft_left": launch_args.ankle_ft_left,
             "ankle_ft_right": launch_args.ankle_ft_right,
+            "torso_imu_model": launch_args.torso_imu_model,
+            "base_imu_model": launch_args.base_imu_model
         },
     )
 
@@ -206,20 +214,24 @@ def declare_actions(
         pkg_name='kangaroo_moveit_config',
         paths=['launch', 'move_group.launch.py'],
         launch_arguments={
-                "use_sim_time": launch_args.use_sim_time,
-                "use_mimic": launch_args.use_mimic,
-                "collision_type": launch_args.collision_type,
-                "sim_type": launch_args.sim_type, 
-                "mj_control": launch_args.mj_control,
-                "has_head": launch_args.has_head,
-                "has_pelvis": launch_args.has_pelvis,
-                "arm_type": launch_args.arm_type,
-                "feet_type": launch_args.feet_type,
-                "end_effector_right": launch_args.end_effector_right,
-                "end_effector_left": launch_args.end_effector_left,
-                "fixation_type": launch_args.fixation_type,
-                "ft_sensor_right": launch_args.ft_sensor_right,
-                "ft_sensor_left": launch_args.ft_sensor_left,
+            "use_sim_time": launch_args.use_sim_time,
+            "use_mimic": launch_args.use_mimic,
+            "collision_type": launch_args.collision_type,
+            "sim_type": launch_args.sim_type,
+            "mj_control": launch_args.mj_control,
+            "has_head": launch_args.has_head,
+            "has_pelvis": launch_args.has_pelvis,
+            "arm_type": launch_args.arm_type,
+            "feet_type": launch_args.feet_type,
+            "end_effector_right": launch_args.end_effector_right,
+            "end_effector_left": launch_args.end_effector_left,
+            "ft_sensor_right": launch_args.ft_sensor_right,
+            "ft_sensor_left": launch_args.ft_sensor_left,
+            "fixation_type": launch_args.fixation_type,
+            "ankle_ft_left": launch_args.ankle_ft_left,
+            "ankle_ft_right": launch_args.ankle_ft_right,
+            "torso_imu_model": launch_args.torso_imu_model,
+            "base_imu_model": launch_args.base_imu_model
         },
         condition=IfCondition(LaunchConfiguration('moveit')))
     # To be added once kangaroo_moveit_config is updated
