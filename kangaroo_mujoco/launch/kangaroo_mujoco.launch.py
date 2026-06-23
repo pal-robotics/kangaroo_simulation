@@ -193,10 +193,11 @@ def declare_actions(
             "-p", "mujoco_robot_description",
             "-a", assets_cache_dir,
             "--convert_stl_to_obj",
-            "--no-fuse",
         ]
         if fixation_type == "floating":
             args_list.append("-f")
+        else:
+            args_list.append("--no-fuse")
 
         return [Node(
             package="mujoco_ros2_control",
