@@ -2,6 +2,43 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add/stairs' into 'humble-devel'
+  Stairs world for lower body with detachable feet
+  See merge request robots/kangaroo_simulation!18
+* Stairs world for lower body with detachable feet
+* Merge branch 'refine/models' into 'humble-devel'
+  Refine models  + Add lower body with detached foot
+  See merge request robots/kangaroo_simulation!17
+* Add lower body with detached foot precompiled simulation
+* Remove pal_mujoco_scenes dependency
+* Set --no-fuse for only fixed fixation type
+* Set density to zero for the foot capsules
+* Merge branch 'add/readme' into 'humble-devel'
+  Add README to the package
+  See merge request robots/kangaroo_simulation!16
+* rename the script
+* fix the generate decomposed pregenerated mjcf script
+* Update README
+* Merge branch 'add/worlds' into 'humble-devel'
+  Adding world argument
+  See merge request robots/kangaroo_simulation!15
+* Adding world argument
+  World suffix + launch option. Only works with pregenerated models. Will
+  fallback gracefully to generating with empty if a given world name
+  doesn't exist
+* Merge branch 'add/cached_models_with_feet_type' into 'humble-devel'
+  Add feet type to the cached models folder naming
+  See merge request robots/kangaroo_simulation!14
+* Add feet type to the cached models folder naming
+* Merge branch 'add/density/foot_capsules' into 'humble-devel'
+  Set foot capsules density set to zero
+  See merge request robots/kangaroo_simulation!13
+* Set foot capsules density set to zero
+* Adding 5dof with RH8D pregenerated
+* Contributors: Sai Kishor Kothakota, oscarmartinez, Óscar Martínez
+
 2.3.0 (2026-06-21)
 ------------------
 * Merge branch 'add/imu_args' into 'humble-devel'
