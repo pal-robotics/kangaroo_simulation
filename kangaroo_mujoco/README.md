@@ -26,14 +26,14 @@ test/
 
 ### Model variants
 
-Each variant is named `mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}[_fixed]`.
+Each variant is named `mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}_{feet_type}_{world_type}`.
 Currently pregenerated variants:
 
 | Directory | Arm | End-effectors |
 |---|---|---|
-| `mjcf_data_5dof_RH8D_RH8D_fixed` | 5-DoF (fixed ankle type) | RH8D dexterous hands |
-| `mjcf_data_4dof_fake-forearm_fake-forearm_fixed` | 4-DoF (fixed ankle type) | Fake forearm stubs |
-| `mjcf_data_no-arm_no-end-effector_no-end-effector_fixed` | None (fixed ankle type) | None |
+| `mjcf_data_5dof_RH8D_RH8D_fixed_empty` | 5-DoF (fixed ankle type) | RH8D dexterous hands |
+| `mjcf_data_4dof_fake-forearm_fake-forearm_fixed_empty` | 4-DoF (fixed ankle type) | Fake forearm stubs |
+| `mjcf_data_no-arm_no-end-effector_no-end-effector_fixed_empty` | None (fixed ankle type) | None |
 
 ---
 
@@ -113,7 +113,7 @@ A custom models directory can be specified with `--models-dir <path>` (default:
 2. Regenerate the variant (replaces the symlink with a real copy):
 
 ```bash
-ros2 launch kangaroo_mujoco generate_decomposed_collision_meshes.launch.py \
+ros2 launch kangaroo_mujoco generate_mjcf.launch.py \
     arm_type:=5dof end_effector_right:=RH8D end_effector_left:=RH8D
 ```
 
