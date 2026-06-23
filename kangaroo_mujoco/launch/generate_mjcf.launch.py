@@ -13,14 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 from dataclasses import dataclass
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, LogInfo, RegisterEventHandler, Shutdown, OpaqueFunction
 from launch.event_handlers import OnProcessExit
-from launch.substitutions import LaunchConfiguration, TextSubstitution
+from launch.substitutions import LaunchConfiguration
 
 from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
 
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase
@@ -106,6 +109,14 @@ def declare_actions(
     launch_description.add_action(SetLaunchConfiguration("use_sim_time", "True"))
     launch_description.add_action(SetLaunchConfiguration("sim_type", "mujoco-ros2-control"))
     launch_description.add_action(SetLaunchConfiguration("mj_control", "motor"))
+    # MuJoCo scene
+    launch_description.add_action(
+        DeclareLaunchArgument(
+            "world_name",
+            default_value="empty",
+            description="MuJoCo scene to load (only from the pregenerated options)",
+        )
+    )
 
     # Robot State Publisher
     robot_state_publisher = include_scoped_launch_py_description(
@@ -113,6 +124,7 @@ def declare_actions(
         paths=['launch', 'robot_state_publisher.launch.py'],
         launch_arguments={
             "use_sim_time": launch_args.use_sim_time,
+            "use_mimic": launch_args.use_mimic,
             "collision_type": launch_args.collision_type,
             "sim_type": launch_args.sim_type,
             "mj_control": launch_args.mj_control,
@@ -122,6 +134,8 @@ def declare_actions(
             "feet_type": launch_args.feet_type,
             "end_effector_right": launch_args.end_effector_right,
             "end_effector_left": launch_args.end_effector_left,
+            "ft_sensor_right": launch_args.ft_sensor_right,
+            "ft_sensor_left": launch_args.ft_sensor_left,
             "fixation_type": launch_args.fixation_type,
             "ankle_ft_left": launch_args.ankle_ft_left,
             "ankle_ft_right": launch_args.ankle_ft_right,
@@ -134,9 +148,22 @@ def declare_actions(
     # Launch the conversion node
     def converter_node_setup(context, *args, **kwargs):
         fixation_type = LaunchConfiguration("fixation_type").perform(context)
+        arm_type = LaunchConfiguration("arm_type").perform(context)
+        end_effector_right = LaunchConfiguration("end_effector_right").perform(context)
+        end_effector_left = LaunchConfiguration("end_effector_left").perform(context)
+        feet_type = LaunchConfiguration("feet_type").perform(context)
+        world_name = LaunchConfiguration("world_name").perform(context)
+        pkg_share = FindPackageShare("kangaroo_mujoco").perform(context)
+        assets_cache_dir = os.path.join(
+            pkg_share,
+            "models",
+            f"assets",
+        )
+        mjcf_file_dir = f"mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}_{feet_type}_{world_name}"
         args_list = [
             "-s", 
-            "-o", [TextSubstitution(text="mjcf_data_"), LaunchConfiguration("arm_type"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_right"), TextSubstitution(text="_"), LaunchConfiguration("end_effector_left"), TextSubstitution(text="_"), LaunchConfiguration("feet_type")],
+            "-o", mjcf_file_dir,
+            "-a", assets_cache_dir,
             "--convert_stl_to_obj",
             "--no-fuse",
         ]
