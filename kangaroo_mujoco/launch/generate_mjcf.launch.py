@@ -165,10 +165,11 @@ def declare_actions(
             "-o", mjcf_file_dir,
             "-a", assets_cache_dir,
             "--convert_stl_to_obj",
-            "--no-fuse",
         ]
         if fixation_type == "floating":
             args_list.append("-f")
+        else:
+            args_list.append("--no-fuse")
         
         converter_node = Node(
             package="mujoco_ros2_control",

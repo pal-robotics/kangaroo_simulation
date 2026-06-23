@@ -479,7 +479,7 @@
     <default class="collision">
       <geom group="3" type="mesh"/>
       <default class="foot_capsule">
-        <geom type="capsule" size="0.01"/>
+        <geom type="capsule" size="0.01" density="0"/>
       </default>
     </default>
   </default>
