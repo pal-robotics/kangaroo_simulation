@@ -154,14 +154,19 @@ def declare_actions(
         arm_type = LaunchConfiguration("arm_type").perform(context)
         end_effector_right = LaunchConfiguration("end_effector_right").perform(context)
         end_effector_left = LaunchConfiguration("end_effector_left").perform(context)
+        feet_type = LaunchConfiguration("feet_type").perform(context)
 
         pkg_share = FindPackageShare("kangaroo_mujoco").perform(context)
-        cache_dir = os.path.join(
+        assets_cache_dir = os.path.join(
             pkg_share,
             "models",
-            f"mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}",
+            f"assets",
         )
-        mjcf_file = os.path.join(cache_dir, "mujoco_description_formatted.xml")
+        mjcf_file = os.path.join(
+            pkg_share,
+            "models",
+            f"mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}_{feet_type}",
+            "mujoco_description_formatted.xml")
 
         if os.path.isfile(mjcf_file) and os.path.getsize(mjcf_file) > 0:
             # Pre-generated MJCF found: publish it directly.
@@ -176,7 +181,7 @@ def declare_actions(
         # No cached MJCF: regenerate from the robot_description and publish it.
         args_list = [
             "-p", "mujoco_robot_description",
-            "-a", os.path.join(cache_dir, "assets"),
+            "-a", assets_cache_dir,
             "--convert_stl_to_obj",
             "--no-fuse",
         ]
