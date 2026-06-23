@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.4.0 (2026-06-23)
+------------------
 * Merge branch 'add/stairs' into 'humble-devel'
   Stairs world for lower body with detachable feet
   See merge request robots/kangaroo_simulation!18
