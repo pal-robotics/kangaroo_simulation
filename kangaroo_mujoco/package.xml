@@ -14,7 +14,6 @@
   <exec_depend>kangaroo_description</exec_depend>
   <exec_depend>kangaroo_bringup</exec_depend>
   <exec_depend>kangaroo_controller_configuration</exec_depend>
-  <exec_depend condition="$PAL_DISTRO != ''">pal_mujoco_scenes</exec_depend>
   <exec_depend>mujoco_ros2_control</exec_depend>
 
   <exec_depend>rclpy</exec_depend>
