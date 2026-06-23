@@ -115,6 +115,15 @@ def declare_actions(
     launch_description.add_action(SetLaunchConfiguration("sim_type", "mujoco-ros2-control"))
     launch_description.add_action(SetLaunchConfiguration("mj_control", "motor"))
 
+    # MuJoCo scene
+    launch_description.add_action(
+        DeclareLaunchArgument(
+            "world_name",
+            default_value="empty",
+            description="MuJoCo scene to load (only from the pregenerated options)",
+        )
+    )
+
     # Robot Bringup
     bringup = include_scoped_launch_py_description(
         pkg_name="kangaroo_bringup",
@@ -155,6 +164,7 @@ def declare_actions(
         end_effector_right = LaunchConfiguration("end_effector_right").perform(context)
         end_effector_left = LaunchConfiguration("end_effector_left").perform(context)
         feet_type = LaunchConfiguration("feet_type").perform(context)
+        world_name = LaunchConfiguration("world_name").perform(context)
 
         pkg_share = FindPackageShare("kangaroo_mujoco").perform(context)
         assets_cache_dir = os.path.join(
@@ -165,7 +175,7 @@ def declare_actions(
         mjcf_file = os.path.join(
             pkg_share,
             "models",
-            f"mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}_{feet_type}",
+            f"mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}_{feet_type}_{world_name}",
             "mujoco_description_formatted.xml")
 
         if os.path.isfile(mjcf_file) and os.path.getsize(mjcf_file) > 0:
