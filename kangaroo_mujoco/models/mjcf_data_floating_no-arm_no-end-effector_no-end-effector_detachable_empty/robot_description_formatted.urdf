@@ -102,7 +102,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/base_link_with_pelvis/base_link_with_pelvis.obj"/>
+				<mesh filename="full/base_link_with_pelvis.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -116,7 +116,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/handle/handle.obj"/>
+				<mesh filename="full/handle.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -136,7 +136,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/pelvis_base_link/pelvis_base_link.obj"/>
+				<mesh filename="full/pelvis_base_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -155,7 +155,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/pelvis_1_link/pelvis_1_link.obj"/>
+				<mesh filename="full/pelvis_1_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -176,7 +176,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/pelvis_2_link/pelvis_2_link.obj"/>
+				<mesh filename="full/pelvis_2_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -202,7 +202,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/torso_link/torso_link.obj"/>
+				<mesh filename="full/torso_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -229,7 +229,7 @@
 			<!-- the mesh origin is at front plate in between the two infrared camera axes -->
 			<origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0043 -0.0175 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/d435/d435.obj"/>
+				<mesh filename="full/d435.obj"/>
 			</geometry>
 		</visual>
 		<inertial>
@@ -497,7 +497,7 @@
 			<!-- the mesh origin is at front plate in between the two infrared camera axes -->
 			<origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0043 -0.0175 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/d435/d435.obj"/>
+				<mesh filename="full/d435.obj"/>
 			</geometry>
 		</visual>
 		<inertial>
@@ -765,7 +765,7 @@
 			<!-- the mesh origin is at front plate in between the two infrared camera axes -->
 			<origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0043 -0.0175 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/d435/d435.obj"/>
+				<mesh filename="full/d435.obj"/>
 			</geometry>
 		</visual>
 		<inertial>
@@ -1033,7 +1033,7 @@
 			<!-- the mesh origin is at front plate in between the two infrared camera axes -->
 			<origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0043 -0.0175 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/d435/d435.obj"/>
+				<mesh filename="full/d435.obj"/>
 			</geometry>
 		</visual>
 		<inertial>
@@ -1294,7 +1294,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_left_1_link/leg_left_1_link.obj" scale="1 1 1"/>
+				<mesh filename="full/leg_left_1_link.obj" scale="1 1 1"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1315,7 +1315,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_left_2_link/leg_left_2_link.obj" scale="1 1 1"/>
+				<mesh filename="full/leg_left_2_link.obj" scale="1 1 1"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1336,7 +1336,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_left_3_link/leg_left_3_link.obj" scale="1 1 1"/>
+				<mesh filename="full/leg_left_3_link.obj" scale="1 1 1"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1359,7 +1359,7 @@
 			<geometry>
 				<!-- The ballscrews are removed from the meshes for better visualization, but they are
         used for inertia computation etc -->
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_4_collision_link/leg_4_collision_link.obj"/>
+				<mesh filename="full/leg_4_collision_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1373,7 +1373,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_tibia_link/leg_tibia_link.obj"/>
+				<mesh filename="full/leg_tibia_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1421,9 +1421,9 @@
 	</joint>
 	<link name="leg_left_4_link">
 		<inertial>
-			<origin rpy="0 0 0" xyz="-0.0027697 1.3528E-07 -3.7736E-05"/>
-			<mass value="0.094024"/>
-			<inertia ixx="5.8253E-06" ixy="-6.0567E-12" ixz="1.016E-07" iyy="1.4458E-05" iyz="-1.9404E-13" izz="1.5653E-05"/>
+			<origin rpy="0 0 0" xyz="-0.002212 0.0 -0.000833"/>
+			<mass value="0.132674"/>
+			<inertia ixx="0.000017" ixy="0.0" ixz="0.000008" iyy="0.000031" iyz="0.0" izz="0.000036"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1434,17 +1434,17 @@
 		</visual>
 	</link>
 	<joint name="leg_left_4_joint" type="revolute">
-		<origin rpy="0 -0.3490658503988659 3.1416" xyz="0 0 0"/>
+		<origin rpy="0 3.141592653589793 0" xyz="0.0 0 0.0"/>
 		<parent link="leg_left_length_link"/>
 		<child link="leg_left_4_link"/>
-		<axis xyz="0 -1 0"/>
+		<axis xyz="0 1 0"/>
 		<limit effort="140" lower="-0.7417649320975901" upper="0.6632251157578453" velocity="3.87"/>
 	</joint>
 	<link name="leg_left_5_link">
 		<inertial>
-			<origin rpy="0 0 0" xyz="-0.014212 -3.1369E-05 0.015061"/>
+			<origin rpy="0 0 0" xyz="-0.014212 0.000031 -0.015062"/>
 			<mass value="0.16804"/>
-			<inertia ixx="4.3556E-05" ixy="-4.1754E-09" ixz="-7.0376E-06" iyy="0.00011001" iyz="2.2861E-09" izz="0.00012442"/>
+			<inertia ixx="0.000051" ixy="0.0" ixz="0.000006" iyy="0.000135" iyz="0.0" izz="0.000152"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1455,7 +1455,7 @@
 		</visual>
 	</link>
 	<joint name="leg_left_5_joint" type="revolute">
-		<origin rpy="0 0 0" xyz="0 0 0"/>
+		<origin rpy="0 0.3490658503988659 0" xyz="0 0 0"/>
 		<parent link="leg_left_4_link"/>
 		<child link="leg_left_5_link"/>
 		<axis xyz="-1 0 0"/>
@@ -1463,9 +1463,9 @@
 	</joint>
 	<link name="leg_left_ankle_attach">
 		<inertial>
-			<origin rpy="0 0 0" xyz="0.0016478 -1.3433E-06 -0.0053101"/>
+			<origin rpy="0 0 0" xyz="0.0016478 0.001648 0.0053101"/>
 			<mass value="0.088641"/>
-			<inertia ixx="2.1418E-05" ixy="8.6637E-10" ixz="3.8778E-07" iyy="2.555E-05" iyz="6.1789E-10" izz="4.4373E-05"/>
+			<inertia ixx="0.000022" ixy="0.0" ixz="-0.000001" iyy="0.000027" iyz="0.0" izz="0.000046"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1476,16 +1476,16 @@
 		</visual>
 	</link>
 	<joint name="leg_left_ankle_attach_joint" type="fixed">
-		<origin rpy="0 0.34907 0" xyz="0.013168 0 0.036178"/>
+		<origin rpy="0 -0.3490658503988659 0" xyz="0.013168 0 -0.036178"/>
 		<parent link="leg_left_5_link"/>
 		<child link="leg_left_ankle_attach"/>
 		<axis xyz="1 0 0"/>
 	</joint>
 	<link name="left_foot">
 		<inertial>
-			<origin rpy="0 0 0" xyz="0.000132090232624911 -3.05273190426678E-05 0.00417401893266306"/>
-			<mass value="0.126216116323818"/>
-			<inertia ixx="5.05342139344645E-05" ixy="-1.21919910576268E-06" ixz="3.77129027963418E-08" iyy="3.0799641719044E-05" iyz="1.55920192749335E-08" izz="7.74873112907028E-05"/>
+			<origin rpy="0 0 0" xyz="-0.000166 0.000023 -0.004617"/>
+			<mass value="0.170698"/>
+			<inertia ixx="0.00007" ixy="-0.000001" ixz="0.0" iyy="0.000065" iyz="0.0" izz="0.000125"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1496,16 +1496,16 @@
 		</visual>
 	</link>
 	<joint name="left_foot_joint" type="fixed">
-		<origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+		<origin rpy="0 0 0" xyz="0 0 0"/>
 		<parent link="leg_left_ankle_attach"/>
 		<child link="left_foot"/>
 		<axis xyz="0 0 0"/>
 	</joint>
-	<link name="left_foot_ft">
+	<link name="ankle_left_ft_sensor_link">
 		<inertial>
 			<origin rpy="0 0 0" xyz="-0.000443003666554599 0.000522074497974099 -0.0153068327087122"/>
-			<mass value="0.00199617753343338"/>
-			<inertia ixx="5.9973064680877E-07" ixy="2.01121334144999E-08" ixz="-8.68902393943816E-09" iyy="5.90181580371415E-07" iyz="1.10619053149078E-08" izz="8.97962347086075E-07"/>
+			<mass value="0.345"/>
+			<inertia ixx="0.000104" ixy="0.000003" ixz="-0.000002" iyy="0.000102" iyz="0.000002" izz="0.000155"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1516,16 +1516,16 @@
 		</visual>
 	</link>
 	<joint name="left_foot_ft" type="fixed">
-		<origin rpy="0 3.1416 0" xyz="0 0 0.014"/>
+		<origin rpy="0 0 3.141592653589793" xyz="0 0 -0.014"/>
 		<parent link="left_foot"/>
-		<child link="left_foot_ft"/>
+		<child link="ankle_left_ft_sensor_link"/>
 		<axis xyz="0 0 0"/>
 	</joint>
 	<link name="left_foot_sole">
 		<inertial>
-			<origin rpy="0 0 0" xyz="0.000379366462454072 5.80159494661185E-05 -0.00336003668438848"/>
-			<mass value="0.34359589794105"/>
-			<inertia ixx="0.000243921537522367" ixy="-3.79473815942421E-07" ixz="1.12448005808514E-07" iyy="0.0015816516325665" iyz="5.17989402289206E-08" izz="0.00182204612839865"/>
+			<origin rpy="0 0 0" xyz="-0.004657 -0.000039 0.022641"/>
+			<mass value="1.081199"/>
+			<inertia ixx="0.001267" ixy="0.0" ixz="0.000111" iyy="0.005705" iyz="0.0" izz="0.00652"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1536,8 +1536,8 @@
 		</visual>
 	</link>
 	<joint name="left_foot_sole" type="fixed">
-		<origin rpy="0 3.1416 0" xyz="0 0 -0.038472"/>
-		<parent link="left_foot_ft"/>
+		<origin rpy="0 0 -3.141592653589793" xyz="0 0 -0.053972"/>
+		<parent link="ankle_left_ft_sensor_link"/>
 		<child link="left_foot_sole"/>
 		<axis xyz="0 0 0"/>
 	</joint>
@@ -1550,7 +1550,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_right_1_link/leg_right_1_link.obj" scale="1 1 1"/>
+				<mesh filename="full/leg_right_1_link.obj" scale="1 1 1"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1571,7 +1571,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_right_2_link/leg_right_2_link.obj" scale="1 1 1"/>
+				<mesh filename="full/leg_right_2_link.obj" scale="1 1 1"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1592,7 +1592,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_right_3_link/leg_right_3_link.obj" scale="1 1 1"/>
+				<mesh filename="full/leg_right_3_link.obj" scale="1 1 1"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1615,7 +1615,7 @@
 			<geometry>
 				<!-- The ballscrews are removed from the meshes for better visualization, but they are
         used for inertia computation etc -->
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_4_collision_link/leg_4_collision_link.obj"/>
+				<mesh filename="full/leg_4_collision_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1629,7 +1629,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/leg_tibia_link/leg_tibia_link.obj"/>
+				<mesh filename="full/leg_tibia_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1677,9 +1677,9 @@
 	</joint>
 	<link name="leg_right_4_link">
 		<inertial>
-			<origin rpy="0 0 0" xyz="-0.0027697 1.3528E-07 -3.7736E-05"/>
-			<mass value="0.094024"/>
-			<inertia ixx="5.8253E-06" ixy="-6.0567E-12" ixz="1.016E-07" iyy="1.4458E-05" iyz="-1.9404E-13" izz="1.5653E-05"/>
+			<origin rpy="0 0 0" xyz="-0.002212 0.0 -0.000833"/>
+			<mass value="0.132674"/>
+			<inertia ixx="0.000017" ixy="0.0" ixz="0.000008" iyy="0.000031" iyz="0.0" izz="0.000036"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1690,17 +1690,17 @@
 		</visual>
 	</link>
 	<joint name="leg_right_4_joint" type="revolute">
-		<origin rpy="0 -0.3490658503988659 3.1416" xyz="0 0 0"/>
+		<origin rpy="0 3.141592653589793 0" xyz="0.0 0 0.0"/>
 		<parent link="leg_right_length_link"/>
 		<child link="leg_right_4_link"/>
-		<axis xyz="0 -1 0"/>
+		<axis xyz="0 1 0"/>
 		<limit effort="140" lower="-0.7417649320975901" upper="0.6632251157578453" velocity="3.87"/>
 	</joint>
 	<link name="leg_right_5_link">
 		<inertial>
-			<origin rpy="0 0 0" xyz="-0.014212 -3.1369E-05 0.015061"/>
+			<origin rpy="0 0 0" xyz="-0.014212 0.000031 -0.015062"/>
 			<mass value="0.16804"/>
-			<inertia ixx="4.3556E-05" ixy="-4.1754E-09" ixz="-7.0376E-06" iyy="0.00011001" iyz="2.2861E-09" izz="0.00012442"/>
+			<inertia ixx="0.000051" ixy="0.0" ixz="0.000006" iyy="0.000135" iyz="0.0" izz="0.000152"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1711,7 +1711,7 @@
 		</visual>
 	</link>
 	<joint name="leg_right_5_joint" type="revolute">
-		<origin rpy="0 0 0" xyz="0 0 0"/>
+		<origin rpy="0 0.3490658503988659 0" xyz="0 0 0"/>
 		<parent link="leg_right_4_link"/>
 		<child link="leg_right_5_link"/>
 		<axis xyz="-1 0 0"/>
@@ -1719,9 +1719,9 @@
 	</joint>
 	<link name="leg_right_ankle_attach">
 		<inertial>
-			<origin rpy="0 0 0" xyz="0.0016478 -1.3433E-06 -0.0053101"/>
+			<origin rpy="0 0 0" xyz="0.0016478 0.001648 0.0053101"/>
 			<mass value="0.088641"/>
-			<inertia ixx="2.1418E-05" ixy="8.6637E-10" ixz="3.8778E-07" iyy="2.555E-05" iyz="6.1789E-10" izz="4.4373E-05"/>
+			<inertia ixx="0.000022" ixy="0.0" ixz="-0.000001" iyy="0.000027" iyz="0.0" izz="0.000046"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1732,16 +1732,16 @@
 		</visual>
 	</link>
 	<joint name="leg_right_ankle_attach_joint" type="fixed">
-		<origin rpy="0 0.34907 0" xyz="0.013168 0 0.036178"/>
+		<origin rpy="0 -0.3490658503988659 0" xyz="0.013168 0 -0.036178"/>
 		<parent link="leg_right_5_link"/>
 		<child link="leg_right_ankle_attach"/>
 		<axis xyz="1 0 0"/>
 	</joint>
 	<link name="right_foot">
 		<inertial>
-			<origin rpy="0 0 0" xyz="0.000132090232624911 -3.05273190426678E-05 0.00417401893266306"/>
-			<mass value="0.126216116323818"/>
-			<inertia ixx="5.05342139344645E-05" ixy="-1.21919910576268E-06" ixz="3.77129027963418E-08" iyy="3.0799641719044E-05" iyz="1.55920192749335E-08" izz="7.74873112907028E-05"/>
+			<origin rpy="0 0 0" xyz="-0.000166 0.000023 -0.004617"/>
+			<mass value="0.170698"/>
+			<inertia ixx="0.00007" ixy="-0.000001" ixz="0.0" iyy="0.000065" iyz="0.0" izz="0.000125"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1752,16 +1752,16 @@
 		</visual>
 	</link>
 	<joint name="right_foot_joint" type="fixed">
-		<origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+		<origin rpy="0 0 0" xyz="0 0 0"/>
 		<parent link="leg_right_ankle_attach"/>
 		<child link="right_foot"/>
 		<axis xyz="0 0 0"/>
 	</joint>
-	<link name="right_foot_ft">
+	<link name="ankle_right_ft_sensor_link">
 		<inertial>
 			<origin rpy="0 0 0" xyz="-0.000443003666554599 0.000522074497974099 -0.0153068327087122"/>
-			<mass value="0.00199617753343338"/>
-			<inertia ixx="5.9973064680877E-07" ixy="2.01121334144999E-08" ixz="-8.68902393943816E-09" iyy="5.90181580371415E-07" iyz="1.10619053149078E-08" izz="8.97962347086075E-07"/>
+			<mass value="0.345"/>
+			<inertia ixx="0.000104" ixy="0.000003" ixz="-0.000002" iyy="0.000102" iyz="0.000002" izz="0.000155"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1772,16 +1772,16 @@
 		</visual>
 	</link>
 	<joint name="right_foot_ft" type="fixed">
-		<origin rpy="0 3.1416 0" xyz="0 0 0.014"/>
+		<origin rpy="0 0 3.141592653589793" xyz="0 0 -0.014"/>
 		<parent link="right_foot"/>
-		<child link="right_foot_ft"/>
+		<child link="ankle_right_ft_sensor_link"/>
 		<axis xyz="0 0 0"/>
 	</joint>
 	<link name="right_foot_sole">
 		<inertial>
-			<origin rpy="0 0 0" xyz="0.000379366462454072 5.80159494661185E-05 -0.00336003668438848"/>
-			<mass value="0.34359589794105"/>
-			<inertia ixx="0.000243921537522367" ixy="-3.79473815942421E-07" ixz="1.12448005808514E-07" iyy="0.0015816516325665" iyz="5.17989402289206E-08" izz="0.00182204612839865"/>
+			<origin rpy="0 0 0" xyz="-0.004657 -0.000039 0.022641"/>
+			<mass value="1.081199"/>
+			<inertia ixx="0.001267" ixy="0.0" ixz="0.000111" iyy="0.005705" iyz="0.0" izz="0.00652"/>
 		</inertial>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
@@ -1792,8 +1792,8 @@
 		</visual>
 	</link>
 	<joint name="right_foot_sole" type="fixed">
-		<origin rpy="0 3.1416 0" xyz="0 0 -0.038472"/>
-		<parent link="right_foot_ft"/>
+		<origin rpy="0 0 -3.141592653589793" xyz="0 0 -0.053972"/>
+		<parent link="ankle_right_ft_sensor_link"/>
 		<child link="right_foot_sole"/>
 		<axis xyz="0 0 0"/>
 	</joint>
@@ -1807,7 +1807,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/arm_cover_link/arm_cover_link.obj"/>
+				<mesh filename="full/arm_cover_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
@@ -1826,7 +1826,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="/home/user/policy_ws/install/kangaroo_mujoco/share/kangaroo_mujoco/models/assets/full/arm_cover_link/arm_cover_link.obj"/>
+				<mesh filename="full/arm_cover_link.obj"/>
 			</geometry>
 			<material name="pal/DarkGrey"/>
 		</visual>
