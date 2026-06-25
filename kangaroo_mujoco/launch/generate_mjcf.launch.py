@@ -159,7 +159,7 @@ def declare_actions(
             "models",
             f"assets",
         )
-        mjcf_file_dir = f"mjcf_data_{arm_type}_{end_effector_right}_{end_effector_left}_{feet_type}_{world_name}"
+        mjcf_file_dir = f"mjcf_data_{fixation_type}_{arm_type}_{end_effector_right}_{end_effector_left}_{feet_type}_{world_name}"
         args_list = [
             "-s", 
             "-o", mjcf_file_dir,
