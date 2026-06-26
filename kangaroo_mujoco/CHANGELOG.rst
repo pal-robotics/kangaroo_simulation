@@ -2,6 +2,23 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'improve/ankle_fusion' into 'humble-devel'
+  Improve ankle inertia fusion
+  See merge request robots/kangaroo_simulation!20
+* Add collision exclude between knee and ankle link
+* Add fixed base mujoco simulation
+* Remove duplicate density setting
+* Refine the collision capsules for the new covers
+* Add the capsules for the new feet with covers
+* Update to new ankle configuration data
+* Merge branch 'add/fixation_type/folder_naming' into 'humble-devel'
+  Add fixation type to the folder naming
+  See merge request robots/kangaroo_simulation!19
+* Add fixation type to the folder naming
+* Contributors: Sai Kishor Kothakota
+
 2.4.0 (2026-06-23)
 ------------------
 * Merge branch 'add/stairs' into 'humble-devel'
