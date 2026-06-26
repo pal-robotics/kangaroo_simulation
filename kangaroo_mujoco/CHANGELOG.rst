@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.5.0 (2026-06-26)
+------------------
 * Merge branch 'improve/ankle_fusion' into 'humble-devel'
   Improve ankle inertia fusion
   See merge request robots/kangaroo_simulation!20
