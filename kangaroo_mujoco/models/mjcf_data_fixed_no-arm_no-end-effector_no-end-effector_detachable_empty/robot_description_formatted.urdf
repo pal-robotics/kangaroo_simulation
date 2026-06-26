@@ -16,12 +16,6 @@
   limitations under the License.
 -->
 <robot name="kangaroo">
-	<link name="virtual_base"/>
-	<joint name="virtual_base_joint" type="floating">
-		<parent link="virtual_base"/>
-		<child link="base_link"/>
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-	</joint>
 	<!-- UNKNOWN ARGS -->
 	<!-- COMMON ARGS -->
 	<!-- GLOBAL PROPERTIES -->
@@ -1871,6 +1865,16 @@
 			</default>
 			<!-- Contact-->
 			<contact>
+				<exclude body1="pelvis_base_link" body2="base_link"/>
+				<exclude body1="pelvis_base_link" body2="back_handle"/>
+				<exclude body1="pelvis_base_link" body2="leg_left_1_link"/>
+				<exclude body1="pelvis_base_link" body2="leg_left_2_link"/>
+				<exclude body1="pelvis_base_link" body2="leg_right_1_link"/>
+				<exclude body1="pelvis_base_link" body2="leg_right_2_link"/>
+				<exclude body1="pelvis_1_link" body2="back_handle"/>
+				<exclude body1="pelvis_1_link" body2="pelvis_base_link"/>
+				<exclude body1="pelvis_2_link" body2="back_handle"/>
+				<exclude body1="pelvis_2_link" body2="pelvis_base_link"/>
 				<exclude body1="pelvis_1_link" body2="base_link"/>
 				<exclude body1="pelvis_1_link" body2="leg_left_1_link"/>
 				<exclude body1="pelvis_1_link" body2="leg_left_2_link"/>
@@ -1890,6 +1894,16 @@
 				<exclude body1="base_link" body2="leg_right_3_link"/>
 				<exclude body1="base_link" body2="leg_right_femur_link"/>
 				<exclude body1="base_link" body2="leg_left_femur_link"/>
+				<exclude body1="base_link" body2="back_handle"/>
+				<exclude body1="base_link" body2="torso_link"/>
+				<exclude body1="back_handle" body2="leg_left_1_link"/>
+				<exclude body1="back_handle" body2="leg_left_2_link"/>
+				<exclude body1="back_handle" body2="leg_right_1_link"/>
+				<exclude body1="back_handle" body2="leg_right_2_link"/>
+				<exclude body1="torso_link" body2="leg_left_1_link"/>
+				<exclude body1="torso_link" body2="leg_left_2_link"/>
+				<exclude body1="torso_link" body2="leg_right_1_link"/>
+				<exclude body1="torso_link" body2="leg_right_2_link"/>
 				<exclude body1="leg_left_1_link" body2="leg_right_1_link"/>
 				<exclude body1="leg_left_1_link" body2="leg_left_3_link"/>
 				<exclude body1="leg_left_2_link" body2="leg_left_3_link"/>
@@ -1951,7 +1965,7 @@
 				<motor ctrllimited="true" ctrlrange="-82 82" joint="leg_right_5_joint" name="leg_right_5_actuator_motor"/>
 			</actuator>
 			<keyframe>
-				<key name="home" qpos="                      0 0 0.9       1 0 0 0                0 0                                                                                0 0.05 0             0.6             -0.07 0               0.9 1.8                0 0.05 0             0.6             -0.07 0               0.9 1.8"/>
+				<key name="home" qpos="                               0 0                                                                                0 0.05 0             0.6             -0.07 0               0.9 1.8                0 0.05 0             0.6             -0.07 0               0.9 1.8"/>
 			</keyframe>
 			<!-- special pal_mujoco tag. This is the least invasive solution I found to add a site to a body  -->
 			<!-- this tag won't work in a regular mjcf xml file -->
@@ -2020,6 +2034,7 @@
 			<!-- angle_increment rotated about the replicate frame's Y axis. The hardware intercface then combines -->
 			<!-- them into a single LaserScan message. -->
 			<!-- <lidar ref_site="torso_link" sensor_name="rf" min_angle="-0.3" max_angle="0.3" angle_increment="0.025" /> -->
+			<modify_element name="base_link" pos="0 0 1.2" quat="1 0 0 0" type="body"/>
 		</processed_inputs>
 	</mujoco_inputs>
 	<ros2_control is_async="false" name="ros2_control_kangaroo_system" type="system">
@@ -2221,6 +2236,6 @@
 		</sensor>
 	</ros2_control>
 	<mujoco>
-		<compiler assetdir="assets" balanceinertia="true" discardvisual="false" strippath="false"/>
+		<compiler assetdir="assets" balanceinertia="true" discardvisual="false" strippath="false" fusestatic="false"/>
 	</mujoco>
 </robot>
