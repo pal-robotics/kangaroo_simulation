@@ -250,8 +250,7 @@ def declare_actions(
             "base_imu_model": launch_args.base_imu_model
         },
         condition=IfCondition(LaunchConfiguration('moveit')))
-    # To be added once kangaroo_moveit_config is updated
-    # launch_description.add_action(move_group)
+    launch_description.add_action(move_group)
 
     return
 
