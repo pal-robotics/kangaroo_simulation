@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.5.1 (2026-07-01)
+------------------
 * Merge branch 'fix/re-add-move_group' into 'humble-devel'
   Re-add move_group node
   See merge request robots/kangaroo_simulation!21
