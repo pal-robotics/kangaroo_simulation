@@ -573,5 +573,9 @@
     <framequat name="torso_imu_sensor_quat" objname="torso_imu_link" objtype="site"/>
     <gyro name="torso_imu_sensor_gyro" site="torso_imu_link"/>
     <accelerometer name="torso_imu_sensor_accel" site="torso_imu_link"/>
+    <force name="ankle_right_ft_sensor_force" site="ankle_right_ft_sensor_link"/>
+    <torque name="ankle_right_ft_sensor_torque" site="ankle_right_ft_sensor_link"/>
+    <force name="ankle_left_ft_sensor_force" site="ankle_left_ft_sensor_link"/>
+    <torque name="ankle_left_ft_sensor_torque" site="ankle_left_ft_sensor_link"/>
   </sensor>
 </mujoco>
