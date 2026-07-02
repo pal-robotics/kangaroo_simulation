@@ -276,7 +276,7 @@
                       <inertial pos="-0.000166 2.3e-05 -0.004617" quat="0.545231 0.450248 -0.545231 0.450248" mass="0.170698" diaginertia="0.000125 7.01926e-05 6.48074e-05"/>
                       <body name="ankle_left_ft_sensor_link" pos="0 0 -0.014" quat="0 0 0 1">
                         <inertial pos="-0.000443004 0.000522074 -0.0153068" quat="0.326172 0.612475 -0.315674 0.647175" mass="0.345" diaginertia="0.000155145 0.000106158 9.96967e-05"/>
-                        <body name="left_foot_sole" pos="0 0 -0.053972" quat="0 0 0 -1">
+                        <body name="left_sole_link" pos="0 0 -0.053972" quat="0 0 0 -1">
                           <inertial pos="-0.004657 -3.9e-05 0.022641" quat="0 0.714534 0 0.699601" mass="1.0812" diaginertia="0.00652234 0.005705 0.00126466"/>
                           <geom material="mtl_foot-sole" mesh="foot-sole" class="visual" pos="" quat=""/>
                         </body>
@@ -304,7 +304,7 @@
                   <site name="leg_left_ankle_attach" pos="0.013168 0 -0.036178" quat="0.9848077530122079 0 -0.17364817766693036 0"/>
                   <site name="left_foot" pos="0.013168 0 -0.036178" quat="0.9848077530122079 0 -0.17364817766693036 0"/>
                   <site name="ankle_left_ft_sensor_link" pos="0.01795628200655936 0 -0.049333696691002724" quat="0 -0.17364817766693036 0 0.984807753012208"/>
-                  <site name="left_foot_sole" pos="0.03641579318213235 0 -0.10005078682005977" quat="0.9848077530122079 0 -0.17364817766693036 0"/>
+                  <site name="left_sole_link" pos="0.03641579318213235 0 -0.10005078682005977" quat="0.9848077530122079 0 -0.17364817766693036 0"/>
                 </body>
                 <geom material="mtl_leg_ankle_cross" mesh="leg_ankle_cross" class="visual" pos="" quat=""/>
                 <site name="leg_left_4_link" pos="0 0 0" quat="1.0 0 0 0"/>
@@ -366,7 +366,7 @@
                       <inertial pos="-0.000166 2.3e-05 -0.004617" quat="0.545231 0.450248 -0.545231 0.450248" mass="0.170698" diaginertia="0.000125 7.01926e-05 6.48074e-05"/>
                       <body name="ankle_right_ft_sensor_link" pos="0 0 -0.014" quat="0 0 0 1">
                         <inertial pos="-0.000443004 0.000522074 -0.0153068" quat="0.326172 0.612475 -0.315674 0.647175" mass="0.345" diaginertia="0.000155145 0.000106158 9.96967e-05"/>
-                        <body name="right_foot_sole" pos="0 0 -0.053972" quat="0 0 0 -1">
+                        <body name="right_sole_link" pos="0 0 -0.053972" quat="0 0 0 -1">
                           <inertial pos="-0.004657 -3.9e-05 0.022641" quat="0 0.714534 0 0.699601" mass="1.0812" diaginertia="0.00652234 0.005705 0.00126466"/>
                           <geom material="mtl_foot-sole" mesh="foot-sole" class="visual" pos="" quat=""/>
                         </body>
@@ -394,7 +394,7 @@
                   <site name="leg_right_ankle_attach" pos="0.013168 0 -0.036178" quat="0.9848077530122079 0 -0.17364817766693036 0"/>
                   <site name="right_foot" pos="0.013168 0 -0.036178" quat="0.9848077530122079 0 -0.17364817766693036 0"/>
                   <site name="ankle_right_ft_sensor_link" pos="0.01795628200655936 0 -0.049333696691002724" quat="0 -0.17364817766693036 0 0.984807753012208"/>
-                  <site name="right_foot_sole" pos="0.03641579318213235 0 -0.10005078682005977" quat="0.9848077530122079 0 -0.17364817766693036 0"/>
+                  <site name="right_sole_link" pos="0.03641579318213235 0 -0.10005078682005977" quat="0.9848077530122079 0 -0.17364817766693036 0"/>
                 </body>
                 <geom material="mtl_leg_ankle_cross" mesh="leg_ankle_cross" class="visual" pos="" quat=""/>
                 <site name="leg_right_4_link" pos="0 0 0" quat="1.0 0 0 0"/>

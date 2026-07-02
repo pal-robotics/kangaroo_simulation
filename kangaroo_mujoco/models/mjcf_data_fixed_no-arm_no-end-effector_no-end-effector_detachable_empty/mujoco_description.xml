@@ -191,7 +191,7 @@
                       <body name="ankle_left_ft_sensor_link" pos="0 0 -0.014" quat="0 0 0 1">
                         <inertial pos="-0.000443004 0.000522074 -0.0153068" quat="0.326172 0.612475 -0.315674 0.647175" mass="0.345" diaginertia="0.000155145 0.000106158 9.96967e-05"/>
                         <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.29804 0.29804 0.29804 1" mesh="foot-ft"/>
-                        <body name="left_foot_sole" pos="0 0 -0.053972" quat="0 0 0 -1">
+                        <body name="left_sole_link" pos="0 0 -0.053972" quat="0 0 0 -1">
                           <inertial pos="-0.004657 -3.9e-05 0.022641" quat="0 0.714534 0 0.699601" mass="1.0812" diaginertia="0.00652234 0.005705 0.00126466"/>
                           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.29804 0.29804 0.29804 1" mesh="foot-sole"/>
                         </body>
@@ -249,7 +249,7 @@
                       <body name="ankle_right_ft_sensor_link" pos="0 0 -0.014" quat="0 0 0 1">
                         <inertial pos="-0.000443004 0.000522074 -0.0153068" quat="0.326172 0.612475 -0.315674 0.647175" mass="0.345" diaginertia="0.000155145 0.000106158 9.96967e-05"/>
                         <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.29804 0.29804 0.29804 1" mesh="foot-ft"/>
-                        <body name="right_foot_sole" pos="0 0 -0.053972" quat="0 0 0 -1">
+                        <body name="right_sole_link" pos="0 0 -0.053972" quat="0 0 0 -1">
                           <inertial pos="-0.004657 -3.9e-05 0.022641" quat="0 0.714534 0 0.699601" mass="1.0812" diaginertia="0.00652234 0.005705 0.00126466"/>
                           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.29804 0.29804 0.29804 1" mesh="foot-sole"/>
                         </body>

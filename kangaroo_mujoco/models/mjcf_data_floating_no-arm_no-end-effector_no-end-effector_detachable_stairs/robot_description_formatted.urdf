@@ -1521,7 +1521,7 @@
 		<child link="left_foot_ft"/>
 		<axis xyz="0 0 0"/>
 	</joint>
-	<link name="left_foot_sole">
+	<link name="left_sole_link">
 		<inertial>
 			<origin rpy="0 0 0" xyz="0.000379366462454072 5.80159494661185E-05 -0.00336003668438848"/>
 			<mass value="0.34359589794105"/>
@@ -1535,10 +1535,10 @@
 			<material name="pal/DarkGrey"/>
 		</visual>
 	</link>
-	<joint name="left_foot_sole" type="fixed">
+	<joint name="left_sole_link" type="fixed">
 		<origin rpy="0 3.1416 0" xyz="0 0 -0.038472"/>
 		<parent link="left_foot_ft"/>
-		<child link="left_foot_sole"/>
+		<child link="left_sole_link"/>
 		<axis xyz="0 0 0"/>
 	</joint>
 	<link name="leg_right_1_link">
@@ -1777,7 +1777,7 @@
 		<child link="right_foot_ft"/>
 		<axis xyz="0 0 0"/>
 	</joint>
-	<link name="right_foot_sole">
+	<link name="right_sole_link">
 		<inertial>
 			<origin rpy="0 0 0" xyz="0.000379366462454072 5.80159494661185E-05 -0.00336003668438848"/>
 			<mass value="0.34359589794105"/>
@@ -1791,10 +1791,10 @@
 			<material name="pal/DarkGrey"/>
 		</visual>
 	</link>
-	<joint name="right_foot_sole" type="fixed">
+	<joint name="right_sole_link" type="fixed">
 		<origin rpy="0 3.1416 0" xyz="0 0 -0.038472"/>
 		<parent link="right_foot_ft"/>
-		<child link="right_foot_sole"/>
+		<child link="right_sole_link"/>
 		<axis xyz="0 0 0"/>
 	</joint>
 	<!-- ARMS -->
