@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.6.0 (2026-07-03)
+------------------
 * Merge branch 'add/force_torque/sensors' into 'humble-devel'
   Add force torque sensor to the detachable feet
   See merge request robots/kangaroo_simulation!23
