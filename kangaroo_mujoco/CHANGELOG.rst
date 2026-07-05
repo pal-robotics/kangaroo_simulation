@@ -2,6 +2,14 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/model_name' into 'humble-devel'
+  Fix the fake-forearm naming to no-end-effector
+  See merge request robots/kangaroo_simulation!24
+* Fix the fake-forearm naming to no-end-effector
+* Contributors: ManuelActisCassa, Sai Kishor Kothakota
+
 2.6.0 (2026-07-03)
 ------------------
 * Merge branch 'add/force_torque/sensors' into 'humble-devel'
