@@ -90,6 +90,53 @@ def absolutize_compiler_asset_dirs(xml_string, base_dir):
     return xml_string.replace(compiler_tag, new_compiler_tag, 1)
 
 
+def substitute_include_tags(xml_string, base_dir):
+    """Replace recursively any include tags with their actual content.
+
+    A cached MJCF may carry relative include directories (e.g. ``file="mujoco_description_formatted.xml"``).
+    Once published over a topic, the consumer no longer shares the working directory the cache was generated in,
+    so relative includes fail to resolve.
+
+    Substituting them directly in the file is equivalent to the parsing mujoco itself executes and makes
+    the cached file self-contained. In order to do this, the absolute path of the include is assembled,
+    its content parsed and used to replace the include tag.
+
+    The ``<mujoco>`` tags of the included files get removed, as a MJCF must only have one of this tags.
+
+    :param xml_string: the MJCF document as a string.
+    :param base_dir: directory the includes are anchored (typically
+        the directory the MJCF file lives in).
+    :returns: the MJCF string with the included tags substituted by their content.
+    """
+    include_tags = re.findall(r"<include\b[^>]*>", xml_string)
+    if not include_tags:
+        return xml_string
+
+    for include_tag in include_tags:
+
+        include_file_match = re.search(
+            r'\b(file)\s*=\s*"([^"]*)"', include_tag
+        )
+        if not include_file_match:
+            raise ValueError("Include tag specified without a file value")
+        include_file_abs_path = base_dir + '/' + include_file_match.group(2)
+
+        with open(include_file_abs_path) as f:
+            included_xml_content = f.read()
+
+            # Remove the top-level <mujoco> tag from the included content,
+            # as it must be unique. Same behaviour as the mujoco parser.
+            mj_tags = re.findall(r"<\/*mujoco\b[^>]*>", included_xml_content)
+            for mj_tag in mj_tags:
+                included_xml_content = included_xml_content.replace(mj_tag, "", 1)
+
+            # Recursive include solving (no-op if no more includes present)
+            included_xml_content = substitute_include_tags(included_xml_content, base_dir)
+            xml_string = xml_string.replace(include_tag, included_xml_content, 1)
+
+    return xml_string
+
+
 class MjcfFilePublisher(Node):
     """Latched publisher that emits the contents of an MJCF file once and holds it.
 
@@ -115,6 +162,10 @@ class MjcfFilePublisher(Node):
 
         with open(mjcf_path) as f:
             xml_content = f.read()
+
+        # Include substitution first, as this allows to then replace relative
+        # asset dirs present anywhere down the include tree.
+        xml_content = substitute_include_tags(xml_content, os.path.dirname(mjcf_path))
         xml_content = absolutize_compiler_asset_dirs(xml_content, os.path.dirname(mjcf_path))
 
         msg = String()
