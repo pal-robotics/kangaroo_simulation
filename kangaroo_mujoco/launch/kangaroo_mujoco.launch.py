@@ -176,7 +176,7 @@ def declare_actions(
             pkg_share,
             "models",
             f"mjcf_data_{fixation_type}_{arm_type}_{end_effector_right}_{end_effector_left}_{feet_type}_{world_name}",
-            "mujoco_description_formatted.xml")
+            "scene.xml")
 
         if os.path.isfile(mjcf_file) and os.path.getsize(mjcf_file) > 0:
             # Pre-generated MJCF found: publish it directly.
