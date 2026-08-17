@@ -2,50 +2,7 @@
 <mujoco model="scene">
 
     <!-- Environment-->
-    <statistic center="0 0 1" extent="1.8" meansize="0.04"/>
-    <visual>
-        <headlight ambient=".4 .4 .4" diffuse=".8 .8 .8" specular="1 1 1"/>
-        <rgba force="1 0 0 1"/>
-        <global azimuth="160" elevation="-20"/>
-        <map force="0.01"/>
-        <scale contactheight="0.2" contactwidth="0.5" forcewidth="0.3"/>
-        <quality shadowsize="8192"/>
-    </visual>
-    <asset>
-        <texture builtin="gradient" height="800" rgb1="0.45 0.59 0.79" rgb2="0.30 0.41 0.60" type="skybox" width="800"/>
-        <texture builtin="checker" height="300" mark="edge" markrgb="0 0 0" name="groundplane" rgb1="1 1 1" rgb2="1 1 1" type="2d" width="300"/>
-        <material name="groundplane" reflectance="0" texrepeat="5 5" texture="groundplane" texuniform="true"/>
-    </asset>
-    <worldbody>
-        <geom conaffinity="0" contype="1" material="groundplane" name="floor" size="0 0 0.01" type="plane"/>
-
-        <geom name="step_front_0"  type="box" size="0.15 1.0 0.085" pos="0.65 0 0.085" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_1"  type="box" size="0.15 1.0 0.170" pos="0.95 0 0.170" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_2"  type="box" size="0.15 1.0 0.255" pos="1.25 0 0.255" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_3"  type="box" size="0.15 1.0 0.340" pos="1.55 0 0.340" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_4"  type="box" size="0.15 1.0 0.425" pos="1.85 0 0.425" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_5"  type="box" size="0.15 1.0 0.510" pos="2.15 0 0.510" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_6"  type="box" size="0.15 1.0 0.595" pos="2.45 0 0.595" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_7"  type="box" size="0.15 1.0 0.680" pos="2.75 0 0.680" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_8"  type="box" size="0.15 1.0 0.765" pos="3.05 0 0.765" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_9"  type="box" size="0.15 1.0 0.850" pos="3.35 0 0.850" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_10" type="box" size="0.15 1.0 0.935" pos="3.65 0 0.935" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_front_11" type="box" size="0.15 1.0 1.020" pos="3.95 0 1.020" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-
-        <geom name="step_back_0"  type="box" size="0.15 1.0 0.085" pos="-0.65 0 0.085" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_1"  type="box" size="0.15 1.0 0.170" pos="-0.95 0 0.170" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_2"  type="box" size="0.15 1.0 0.255" pos="-1.25 0 0.255" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_3"  type="box" size="0.15 1.0 0.340" pos="-1.55 0 0.340" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_4"  type="box" size="0.15 1.0 0.425" pos="-1.85 0 0.425" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_5"  type="box" size="0.15 1.0 0.510" pos="-2.15 0 0.510" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_6"  type="box" size="0.15 1.0 0.595" pos="-2.45 0 0.595" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_7"  type="box" size="0.15 1.0 0.680" pos="-2.75 0 0.680" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_8"  type="box" size="0.15 1.0 0.765" pos="-3.05 0 0.765" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_9"  type="box" size="0.15 1.0 0.850" pos="-3.35 0 0.850" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_10" type="box" size="0.15 1.0 0.935" pos="-3.65 0 0.935" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-        <geom name="step_back_11" type="box" size="0.15 1.0 1.020" pos="-3.95 0 1.020" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-
-    </worldbody>
+    <include file="../worlds/stairs.xml"/>
 
     <!-- Robot -->
     <include file="mujoco_description_formatted.xml"/>
