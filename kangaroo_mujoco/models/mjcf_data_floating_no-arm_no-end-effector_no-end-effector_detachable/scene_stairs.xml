@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<mujoco model="scene">
+
+    <!-- Environment-->
+    <include file="../worlds/stairs.xml"/>
+
+    <!-- Robot -->
+    <include file="mujoco_description_formatted.xml"/>
+
+</mujoco>

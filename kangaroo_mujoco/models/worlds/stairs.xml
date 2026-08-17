@@ -1,7 +1,5 @@
-<?xml version="1.0" ?>
-<mujoco model="scene">
+<mujoco model="stairs">
 
-    <!-- Environment-->
     <statistic center="0 0 1" extent="1.8" meansize="0.04"/>
     <visual>
         <headlight ambient=".4 .4 .4" diffuse=".8 .8 .8" specular="1 1 1"/>
@@ -44,10 +42,6 @@
         <geom name="step_back_9"  type="box" size="0.15 1.0 0.850" pos="-3.35 0 0.850" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
         <geom name="step_back_10" type="box" size="0.15 1.0 0.935" pos="-3.65 0 0.935" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
         <geom name="step_back_11" type="box" size="0.15 1.0 1.020" pos="-3.95 0 1.020" rgba="0.7 0.7 0.72 1" contype="1" conaffinity="0"/>
-
     </worldbody>
 
-    <!-- Robot -->
-    <include file="mujoco_description_formatted.xml"/>
-
-</mujoco>
+</mujoco>       

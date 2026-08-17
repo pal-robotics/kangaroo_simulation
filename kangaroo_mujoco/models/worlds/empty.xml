@@ -1,7 +1,5 @@
-<?xml version="1.0" ?>
-<mujoco model="scene">
+<mujoco model="empty">
 
-    <!-- Environment-->
     <statistic center="0 0 1" extent="1.8" meansize="0.04"/>
     <visual>
         <headlight ambient=".4 .4 .4" diffuse=".8 .8 .8" specular="1 1 1"/>
@@ -19,8 +17,5 @@
     <worldbody>
         <geom conaffinity="0" contype="1" material="groundplane" name="floor" size="0 0 0.01" type="plane"/>
     </worldbody>
-
-    <!-- Robot -->
-    <include file="mujoco_description_formatted.xml"/>
 
 </mujoco>
