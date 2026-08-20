@@ -1,3 +1,4 @@
 controller_manager:
   ros__parameters:
     update_rate: 2000
+    handle_exceptions: false

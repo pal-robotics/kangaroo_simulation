@@ -21,7 +21,7 @@ from launch import LaunchDescription
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
 
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, OpaqueFunction
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration, OpaqueFunction, Shutdown
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
@@ -221,6 +221,7 @@ def declare_actions(
             {"use_sim_time": LaunchConfiguration("use_sim_time")},
             parameters_file,
         ],
+        on_exit=Shutdown()
     )
 
     launch_description.add_action(control_node)
