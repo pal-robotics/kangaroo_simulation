@@ -2,6 +2,33 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add/compatibility/latest_release' into 'humble-devel'
+  Shutdown nodes when mujoco simulation fails to launch
+  See merge request robots/kangaroo_simulation!29
+* Exit and shutdown nodes when mujoco_ros2_control fail to launch
+* Add velocity PIDs to avoid failing the simulation
+* Merge branch 'feat/rough_terrain_4dof' into 'humble-devel'
+  Adding rough terrain world
+  See merge request robots/kangaroo_simulation!28
+* Using the rough terrain world in 4dof config
+* Adding rough terrain world
+  Almost identical to the mjlab terrain curriculum but smaller
+* Using new world structure
+  Per world scene controlled via the world_name argument
+* Moving world definition to a separate folder
+* Merge branch 'feat/include_subs' into 'humble-devel'
+  Function to substitute include tags
+  See merge request robots/kangaroo_simulation!26
+* More generic xml structure
+  The publisher loads a scene, wich is environment + robotm making easier
+  to work with different environments
+* Function to substitute include tags
+  Replaces recursively any present include tags in an mjcf string for
+  their actual content, cleaning their mujoco tags
+* Contributors: Sai Kishor Kothakota, Óscar Martínez
+
 2.6.1 (2026-07-05)
 ------------------
 * Merge branch 'fix/model_name' into 'humble-devel'
