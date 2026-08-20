@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.7.0 (2026-08-20)
+------------------
 * Merge branch 'add/compatibility/latest_release' into 'humble-devel'
   Shutdown nodes when mujoco simulation fails to launch
   See merge request robots/kangaroo_simulation!29
