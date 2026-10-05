@@ -14,6 +14,7 @@ install(PROGRAMS
 if(BUILD_TESTING)
   find_package(ament_cmake_pytest REQUIRED)
   ament_add_pytest_test(test_model_assets test/test_model_assets.py)
+  ament_add_pytest_test(test_sensor_noise test/test_sensor_noise.py)
 endif()
 
 ament_auto_package(INSTALL_TO_SHARE launch config models)

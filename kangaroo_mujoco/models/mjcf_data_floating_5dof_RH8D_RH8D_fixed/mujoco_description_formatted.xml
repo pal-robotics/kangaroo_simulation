@@ -960,8 +960,8 @@
     <key name="home" qpos="                      0 0 0.9       1 0 0 0                0 0                  0.24 1.32 1.57 0.8 0.0               1.17971e-06 0.00257644 1.44184e-05 0.000670623 0.000512289 1.45929e-05 0.000673898 0.000514741 2.91036e-05 0.000688241 0.000529063 0.000621522 0.000684717 0.000526768 0.00012568 -6.97226e-05 -0.00216582 -0.000943487                -0.24 1.32 -1.57 0.8 0.0               1.17971e-06 0.00257644 1.44184e-05 0.000670623 0.000512289 1.45929e-05 0.000673898 0.000514741 2.91036e-05 0.000688241 0.000529063 0.000621522 0.000684717 0.000526768 0.00012568 -6.97226e-05 -0.00216582 -0.000943487                0 0.05 0             0.6             -0.07 0               0.9 1.8                0 0.05 0             0.6             -0.07 0               0.9 1.8"/>
   </keyframe>
   <sensor>
-    <framequat name="torso_imu_sensor_quat" objname="torso_imu_link" objtype="site"/>
-    <gyro name="torso_imu_sensor_gyro" site="torso_imu_link"/>
-    <accelerometer name="torso_imu_sensor_accel" site="torso_imu_link"/>
+    <framequat name="torso_imu_sensor_quat" objname="torso_imu_link" objtype="site" noise="0.001"/>
+    <gyro name="torso_imu_sensor_gyro" site="torso_imu_link" noise="0.0015"/>
+    <accelerometer name="torso_imu_sensor_accel" site="torso_imu_link" noise="0.02"/>
   </sensor>
 </mujoco>
