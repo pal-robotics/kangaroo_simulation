@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mujoco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.7.1 (2026-10-05)
+------------------
 * Merge branch 'add/noise_values' into 'humble-devel'
   Add IMU noise values to the models
   See merge request robots/kangaroo_simulation!31
